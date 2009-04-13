@@ -1,0 +1,9 @@
+*foreground: wheat
+*background: darkslategrey
+
+URxvt*transparent:true
+URxvt*tintColor:red
+URxvt*saveLines:12000
+URxvt*scrollBar:true
+URxvt*scrollBar_right:true
+URxvt*scrollstyle:rxvt
