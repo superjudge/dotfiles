@@ -1,0 +1,25 @@
+# (-*- shell-script -*-)
+
+# Remap the escape key
+escape ^Oo
+
+# UTF stuff
+setenv LC_CTYPE en_US.UTF-8
+defutf8 on
+
+nethack on
+
+#caption always "%{= wk} %?%-Lw%?%{= kd} %n*%f %t %{= wk}%?%+Lw%? %{= wk}%=%{= Wk} %C%a %m-%d-%Y %{= wk}"
+#caption always "%{+b kG} %=%{-s} %{.K}%-w%{.B}%n %{.G}%t%{.K}%+w%{.G} %{+s} %="
+#caption always “%{kB}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{kB}%?%+Lw%?”
+
+hardstatus alwayslastline
+hardstatus string '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %M %d %c ]%{W}'
+#hardstatus string "%{=b kW}[ %{= Y}$USER @ %H %{b W}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{b W}][%{= Y} %l %{b W}][%{= Y} %d/%m %{Y}%c %{b W}]"
+
+activity "%c activity -> %n%f %t"
+
+# windowlist string "Num Name%=Flags"
+# windowlist title "%3n %t%=%f"
+
+setenv DISPLAY ':0'
