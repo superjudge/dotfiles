@@ -1,0 +1,28 @@
+# (-*- shell-script -*-)
+
+path=( "$HOME/bin" /opt/local/bin /opt/local/sbin "$path[@]" )
+export PATH
+typeset -U path
+
+manpath=( /opt/local/man "$manpath[@]" )
+export MANPATH
+typeset -U manpath
+
+# Setup Erlang
+export ERL_LIBS=/Users/mjl/work/erlang/mochiweb-read-only/:/Users/mjl/work/erlang/erlyweb-read-only/
+
+# Setup Clozure CL
+export CCL_DEFAULT_DIRECTORY=/Users/mjl/work/clozure/1.2/
+
+# Setup JAVA_HOME
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home
+
+# Setup Groovy and Grails
+export GROOVY_HOME=/Users/mjl/work/java/groovy
+export GRAILS_HOME=/Users/mjl/work/java/grails
+path=( "$GROOVY_HOME/bin" "$GRAILS_HOME/bin" "$path[@]" )
+export PATH
+typeset -U path
+
+# Setup VimClojure and Nailgun
+export CLOJURE_EXT=$HOME/.clojurelib

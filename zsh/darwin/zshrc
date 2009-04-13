@@ -1,0 +1,10 @@
+# (-*- shell-script -*-)
+
+# MacVim
+alias mvim='/Applications/MacVim.app/Contents/MacOS/Vim -g'
+alias mvimdiff='mvim -d0'
+alias mview='mvim -R'
+
+# Make sure Python virtualenv is setup nicely
+source /opt/local/bin/virtualenvwrapper_bashrc-2.6
+#source /Library/Frameworks/Python.framework/Versions/2.6/bin/virtualenvwrapper_bashrc

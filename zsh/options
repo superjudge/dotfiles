@@ -1,0 +1,30 @@
+# (-*- shell-script -*-)
+
+# Setup new style completion.
+autoload -U compinit
+compinit
+
+# Set/unset shell options
+setopt notify
+setopt globdots
+setopt correct
+setopt pushdtohome
+setopt cdablevars
+setopt autolist
+setopt correctall
+setopt autocd
+setopt recexact
+setopt longlistjobs
+setopt autoresume
+setopt histignoredups
+setopt pushdsilent
+setopt noclobber
+setopt autopushd
+setopt pushdminus
+setopt extendedglob
+setopt rcquotes
+setopt mailwarning
+
+unsetopt bgnice autoparamslash
+
+export EDITOR=vi
