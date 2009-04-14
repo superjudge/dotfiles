@@ -1,3 +1,5 @@
+# (-*- shell-script -*-)
+
 # This file is sourced in login shells. It should contain commands that should
 # be executed only in login shells.
 

@@ -1,3 +1,5 @@
+# (-*- shell-script -*-)
+
 # This file is similar to .zlogin, except it is sourced before .zshrc.
 # It is meant as an alternative to .zlogin (especially for ksh fans); the
 # two are not meant to be used together (event though they could be).

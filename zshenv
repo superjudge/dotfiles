@@ -1,3 +1,5 @@
+# (-*- shell-script -*-)
+
 # This file is sourced on all invocations of the shell, unless the -f
 # option is set. It should contain commands that set the command search
 # path, plus other important environment variables. It should not contain

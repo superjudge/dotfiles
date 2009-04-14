@@ -1,3 +1,5 @@
+# (-*- shell-script -*-)
+
 # This file is sourced when a login shell exits.
 
 # Load OS specific settings
