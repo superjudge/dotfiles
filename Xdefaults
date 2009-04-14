@@ -1,6 +1,12 @@
+Xft.antialias:true
+Xft.rgba:rgb
+Xft.hinting:true
+Xft.hintstyle:hintslight
+
 *foreground: wheat
 *background: darkslategrey
 
+urxvt*fading:30
 URxvt*transparent:true
 URxvt*tintColor:red
 URxvt*saveLines:12000
