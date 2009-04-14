@@ -6,6 +6,10 @@ source ~/.zsh/options
 source ~/.zsh/keybindings
 source ~/.zsh/functions
 
+# Setup virtualenv wrapper
+export WORKON_HOME=$HOME/.virtualenvs
+source ~/bin/virtualenvwrapper_bashrc
+
 # Load OS specific settings
 [[ $OSTYPE == darwin*  && -f ~/.zsh/darwin/zshrc ]]  && source ~/.zsh/darwin/zshrc
 [[ $OSTYPE == linux*   && -f ~/.zsh/linux/zshrc ]]   && source ~/.zsh/linux/zshrc
