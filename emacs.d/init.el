@@ -14,17 +14,45 @@
 ;; ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 ;; OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
+(require 'color-theme)
+(color-theme-comidia)
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
 ;;; A nice startup message
 (defun emacs-reloaded ()
   (animate-string (concat ";; Initialization successful. Welcome to "
-			  (substring (emacs-version) 0 16)
-			  ".")
-		  0 1)
-  (newline-and-indent) (newline-and-indent))
+                          (substring (emacs-version) 0 16)
+                          ".")
+                  0 1)
+  (newline-and-indent)
+  (newline-and-indent)
+  ;; We do not like sloppy whitespace
+  (setq-default show-trailing-whitespace t))
 (add-hook 'after-init-hook 'emacs-reloaded)
+
+;;; Turn on font-lock for a bunch of programming modes
+(add-hook 'c++-mode-hook 'turn-on-font-lock)
+(add-hook 'c-mode-hook 'turn-on-font-lock)
+(add-hook 'emacs-lisp-mode-hook 'turn-on-font-lock)
+(add-hook 'shell-script-mode-hook 'turn-on-font-lock)
+(add-hook 'cperl-mode-hook 'turn-on-font-lock)
+(add-hook 'python-mode-hook 'turn-on-font-lock)
+(add-hook 'html-mode-hook 'turn-on-font-lock)
+(add-hook 'LaTeX-mode-hook 'turn-on-font-lock)
+(add-hook 'java-mode-hook 'turn-on-font-lock)
+(add-hook 'php-mode-hook 'turn-on-font-lock)
+(add-hook 'write-file-hook 'time-stamp)
+
+(diary)
+(require 'erc)
+(column-number-mode t)
+;(auto-compression-mode t)
+(iswitchb-mode t)
+
+;;; Indent using spaces only
+(setq-default indent-tabs-mode t)
 
 ;;; Visible bell only
 (setq visible-bell t)
@@ -44,7 +72,9 @@
 (load "accel" t t)
 
 ;;; Start scrolling when 2 lines from top/bottom
-(setq scroll-margin 2)
+;(setq scroll-margin 2)
+;(setq scroll-step 1)
+(blink-cursor-mode nil)
 
 ;;; Set so when moving by page, last visible line is highlighted.
 ;(load "highlight-context-line.el")
@@ -55,11 +85,11 @@
 
 ;;; Compile init.el if needed
 (defun autocompile nil
-  "compile itself if ~/.emacs"
+  "compile itself if ~/.emacs.d/init.el"
   (interactive)
   (require 'bytecomp)
   (if (string= (buffer-file-name)
-               (expand-file-name (concat default-directory ".emacs")))
+               (expand-file-name (concat default-directory "init.el")))
       (byte-compile-file (buffer-file-name))))
 
 (add-hook 'after-save-hook 'autocompile)
@@ -102,9 +132,9 @@
 ;;; Setup Haskell
 (setq auto-mode-alist
       (append auto-mode-alist
-	      '(("\\.[hg]s$" . haskell-mode)
-		("\\.hi$" . haskell-mode)
-		("\\.l[hg]s$" . haskell-mode))))
+              '(("\\.[hg]s$" . haskell-mode)
+                ("\\.hi$" . haskell-mode)
+                ("\\.l[hg]s$" . haskell-mode))))
 (autoload 'haskell-mode "haskell-mode"
   "Major mode for editing Haskell scripts." t)
 (autoload 'literate-haskell-mode "haskell-mode"
