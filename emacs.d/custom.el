@@ -4,6 +4,7 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(tool-bar-mode nil)
+ '(menu-bar-mode nil)
  '(add-log-keep-changes-together t)
  '(change-log-version-info-enabled t)
  '(column-number-mode t)
