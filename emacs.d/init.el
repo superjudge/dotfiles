@@ -14,6 +14,9 @@
 ;; ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 ;; OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
 ;;; A nice startup message
 (defun emacs-reloaded ()
   (animate-string (concat ";; Initialization successful. Welcome to "
@@ -95,9 +98,6 @@
 ;(setq erlang-root-dir "/opt/local/lib/erlang")
 ;(setq exec-path (cons "/opt/local/lib/erlang/bin" exec-path))
 ;(require 'erlang-start)
-
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
 
 ;;; Setup Haskell
 (setq auto-mode-alist
