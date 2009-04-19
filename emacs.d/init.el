@@ -35,7 +35,7 @@
 (setq save-abbrevs t)
 
 ;;; Turn off the status bar if we're not in a window system
-(menu-bar-mode (if window-system 1 -1))
+;(menu-bar-mode (if window-system 1 -1))
 
 ;;; Accelerate the cursor when scrolling.
 (load "accel" t t)
@@ -64,10 +64,10 @@
 ;(require 'jde)
 
 ;;; Clojure mode
-(add-to-list 'load-path "~/work/lisp/clojure-mode")
+;(add-to-list 'load-path "~/work/lisp/clojure-mode")
 ;(require 'clojure-auto)
-(autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
-(add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
+;(autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
+;(add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
 
 ;;; Slime
 ;(add-to-list 'load-path "~/work/lisp/slime/")
@@ -76,13 +76,13 @@
 ;(slime-setup '(slime-repl))
 
 ;;; Clojure Swank
-(add-to-list 'load-path "~/work/lisp/swank-clojure")
-(setq swank-clojure-binary "/Users/mjl/bin/clj")
+;(add-to-list 'load-path "~/work/lisp/swank-clojure")
+;(setq swank-clojure-binary "/Users/mjl/bin/clj")
 ;(setq swank-clojure-jar-path "/Users/mjl/work/lisp/clojure-read-only/clojure.jar")
 ;alternatively, you can set up the clojure wrapper script and use that: 
-(setq swank-clojure-extra-classpaths (list "/Users/mjl/work/lisp/programming-clojure"))
+;(setq swank-clojure-extra-classpaths (list "/Users/mjl/work/lisp/programming-clojure"))
 ;(setq swank-clojure-extra-vm-args "-server -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8888")
-(require 'swank-clojure-autoload)
+;(require 'swank-clojure-autoload)
 
 ;; To use other Lisps...
 ;; Incidentally, you can then choose different Lisps with
@@ -91,10 +91,10 @@
 ;             '(sbcl   ("/opt/local/bin/sbcl")))
 
 ;;; Set-up Erlang mode
-(setq load-path (cons "/opt/local/lib/erlang/lib/tools-2.6.2/emacs" load-path))
-(setq erlang-root-dir "/opt/local/lib/erlang")
-(setq exec-path (cons "/opt/local/lib/erlang/bin" exec-path))
-(require 'erlang-start)
+;(setq load-path (cons "/opt/local/lib/erlang/lib/tools-2.6.2/emacs" load-path))
+;(setq erlang-root-dir "/opt/local/lib/erlang")
+;(setq exec-path (cons "/opt/local/lib/erlang/bin" exec-path))
+;(require 'erlang-start)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
