@@ -9,7 +9,8 @@ defutf8 on
 
 # 256 color support
 attrcolor b ".I"
-termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+termcapinfo xterm-256color Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm
+termcapinfo xterm-color Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm
 defbce "on"
 
 nethack on
