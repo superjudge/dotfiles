@@ -1,0 +1,37 @@
+;;-*-coding: emacs-mule;-*-
+(define-abbrev-table 'comint-mode-abbrev-table '(
+    ))
+
+(define-abbrev-table 'diary-mode-abbrev-table '(
+    ))
+
+(define-abbrev-table 'erc-mode-abbrev-table '(
+    ))
+
+(define-abbrev-table 'fancy-diary-display-mode-abbrev-table '(
+    ))
+
+(define-abbrev-table 'fundamental-mode-abbrev-table '(
+    ))
+
+(define-abbrev-table 'global-abbrev-table '(
+    ))
+
+(define-abbrev-table 'lisp-mode-abbrev-table '(
+    ))
+
+(define-abbrev-table 'python-mode-abbrev-table '(
+    ("class" "class Foo(object):
+    def __init__(self, *args, **kwargs):
+        pass
+" nil 1)
+    ("try" "try:
+    pass
+except Exception, e:
+    pass
+" nil 2)
+    ))
+
+(define-abbrev-table 'text-mode-abbrev-table '(
+    ))
+

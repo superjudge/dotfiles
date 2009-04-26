@@ -14,8 +14,8 @@
 ;; ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 ;; OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-(require 'color-theme)
-(color-theme-comidia)
+(if (require 'color-theme nil t)
+    (color-theme-comidia))
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
