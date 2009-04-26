@@ -1,4 +1,4 @@
-;; -*- Mode: Emacs-Lisp -*-
+;; -*- Mode: Emacs-Lisp, Coding: utf-8 -*-
 
 ;; Copyright (c) 2009, Johan Liseborn <johan.liseborn@gmail.com>
 ;;
@@ -31,6 +31,11 @@
   ;; We do not like sloppy whitespace
   (setq-default show-trailing-whitespace t))
 (add-hook 'after-init-hook 'emacs-reloaded)
+(add-hook 'after-init-hook 'server-start)
+
+;;; Setup coding for international
+(set-language-environment 'utf-8)
+(set-terminal-coding-system 'utf-8)
 
 ;;; Turn on font-lock for a bunch of programming modes
 (add-hook 'c++-mode-hook 'turn-on-font-lock)
@@ -50,6 +55,9 @@
 (column-number-mode t)
 ;(auto-compression-mode t)
 (iswitchb-mode t)
+(winner-mode )
+
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 ;;; Indent using spaces only
 (setq-default indent-tabs-mode t)
@@ -159,8 +167,5 @@
 (add-to-list 'desktop-modes-not-to-save 'erc-mode)
 (add-to-list 'desktop-modes-not-to-save 'Info-mode)
 (setq desktop-files-not-to-save "\\(^/[^/:]*:\\|bbdb\\)")
-
-;; start the server for emacsclient
-(server-start)
 
 (setq debug-on-error nil) ;was set t at top of buffer
