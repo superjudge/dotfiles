@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/mjl/work/test/lift/helloworld/src'
-let g:netrw_dirhist_2='/Users/mjl/work/Django-1.0'
-let g:netrw_dirhist_3='/Users/mjl/work/test/retwis'
-let g:netrw_dirhist_4='/Users/mjl/work/test/lift/pocketchangeapp/PocketChange'
-let g:netrw_dirhist_5='/Users/mjl/work/twostory/site-repo/mjl/new-price-model'
-let g:netrw_dirhist_6='/Users/mjl/work/test/lift/helloworld'
