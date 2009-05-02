@@ -1,4 +1,4 @@
-;; -*- Mode: Emacs-Lisp; Coding: utf-8 -*-
+;; -*- mode: emacs-lisp; coding: utf-8 -*-
 
 ;; Copyright (c) 2009, Johan Liseborn <johan.liseborn@gmail.com>
 ;;
@@ -13,6 +13,16 @@
 ;; WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ;; ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 ;; OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+;;						    8
+;;					       	    8
+;; .oPYo. 8    8 .oPYo. .oPYo. 8oPYo. 8 8    8 .oPYo8 .oPYo. .oPYo.
+;; Yb..	  8    8 8    8	8oooo8 8'     8	8    8 8    8 8    8 8oooo8
+;;   'Yb. 8    8 8    8	8.     8      8	8    8 8    8 8    8 8
+;; 'YooP' 'YooP' 8YooP'	'Yooo' 8      8	'YooP' 'YooP' 'YooP8 'YooP'
+;; ......:......:8......:.....:......:8........:......:...:8.:....:
+;; ::::::::::::::8:::::::::::::::'YooP':::::::::::::::'YooP':::::::
+;; ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ;;; Provide a useful error trace if init fails
 (setq debug-on-error t)
@@ -30,14 +40,27 @@
 (load custom-file)
 
 ;;; A nice startup message...
-(defun emacs-reloaded ()
-  (animate-string (concat ";; Initialization successful. Welcome to "
-                          (substring (emacs-version) 0 16)
-                          ".")
-                  0 1)
+(defun superjudge-reloaded ()
+  (animate-string
+   (concat
+    ";;                                                  8              \n"
+    ";;                                                  8              \n"
+    ";; .oPYo. 8    8 .oPYo. .oPYo. 8oPYo. 8 8    8 .oPYo8 .oPYo. .oPYo.\n"
+    ";; Yb..   8    8 8    8 8oooo8 8'     8 8    8 8    8 8    8 8oooo8\n"
+    ";;   'Yb. 8    8 8    8 8.     8      8 8    8 8    8 8    8 8     \n"
+    ";; 'YooP' 'YooP' 8YooP' 'Yooo' 8      8 'YooP' 'YooP' 'YooP8 'YooP'\n"
+    ";; ......:......:8......:.....:......:8........:......:...:8.:....:\n"
+    ";; ::::::::::::::8:::::::::::::::'YooP':::::::::::::::'YooP':::::::\n"
+    ";; ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n"
+    ";; Initialization successful. Welcome to "
+    (substring (emacs-version) 0 16)
+    ".")
+   0 0)
+  (end-of-buffer)
   (newline-and-indent)
   (newline-and-indent))
-(add-hook 'after-init-hook 'emacs-reloaded)
+
+(add-hook 'after-init-hook 'superjudge-reloaded)
 (add-hook 'after-init-hook 'server-start)
 
 ;;; Setup encoding for international
@@ -48,6 +71,7 @@
 (add-hook 'c++-mode-hook 'turn-on-font-lock)
 (add-hook 'c-mode-hook 'turn-on-font-lock)
 (add-hook 'emacs-lisp-mode-hook 'turn-on-font-lock)
+(add-hook 'emacs-lisp-mode-hook '(lambda () (setq show-trailing-whitespace t)))
 (add-hook 'shell-script-mode-hook 'turn-on-font-lock)
 (add-hook 'cperl-mode-hook 'turn-on-font-lock)
 (add-hook 'python-mode-hook 'turn-on-font-lock)
@@ -121,14 +145,15 @@
 ;(add-to-list 'load-path "~/work/lisp/slime/")
 ;(add-to-list 'load-path "~/work/lisp/slime/contrib")
 (if (require 'slime nil t)
-    (slime-setup '(slime-repl)))
+    ;;(slime-setup '(slime-repl)))
+    (slime-setup '(slime-fancy slime-banner slime-mdot-fu)))
 
 ;;; Clojure mode
 (add-to-list 'load-path "~/local/share/emacs/site-lisp/clojure-mode/")
 ;(add-to-list 'load-path "~/work/lisp/clojure-mode")
-(if (require 'clojure-auto nil t)
+(if (require 'clojure-mode nil t)
     (progn (autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
-	   (add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))))
+	   (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))))
 
 ;;; Clojure Swank
 (add-to-list 'load-path "~/local/share/emacs/site-lisp/swank-clojure/")
