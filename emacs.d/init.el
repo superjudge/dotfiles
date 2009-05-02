@@ -82,6 +82,13 @@
 (add-hook 'php-mode-hook 'turn-on-font-lock)
 (add-hook 'write-file-hook 'time-stamp)
 
+;;; Auto-insert
+(require 'autoinsert)
+(auto-insert-mode)
+(setq auto-insert-directory "~/.emacs.d/templates/")
+(setq auto-insert-query nil)
+(define-auto-insert "\.py" "python.py")
+
 ;;; Calendar & Time stuff...
 (setq calendar-latitude 59.3)
 (setq calendar-longitude 18.4)
