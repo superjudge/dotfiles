@@ -43,11 +43,11 @@
 (defun superjudge-reloaded ()
   (animate-string
    (concat
-    ";;                                                  8              \n"
-    ";;                                                  8              \n"
+    ";;                                                  8\n"
+    ";;                                                  8\n"
     ";; .oPYo. 8    8 .oPYo. .oPYo. 8oPYo. 8 8    8 .oPYo8 .oPYo. .oPYo.\n"
     ";; Yb..   8    8 8    8 8oooo8 8'     8 8    8 8    8 8    8 8oooo8\n"
-    ";;   'Yb. 8    8 8    8 8.     8      8 8    8 8    8 8    8 8     \n"
+    ";;   'Yb. 8    8 8    8 8.     8      8 8    8 8    8 8    8 8\n"
     ";; 'YooP' 'YooP' 8YooP' 'Yooo' 8      8 'YooP' 'YooP' 'YooP8 'YooP'\n"
     ";; ......:......:8......:.....:......:8........:......:...:8.:....:\n"
     ";; ::::::::::::::8:::::::::::::::'YooP':::::::::::::::'YooP':::::::\n"
