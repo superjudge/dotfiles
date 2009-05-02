@@ -146,7 +146,7 @@
 ;(add-to-list 'load-path "~/work/lisp/slime/contrib")
 (if (require 'slime nil t)
     ;;(slime-setup '(slime-repl)))
-    (slime-setup '(slime-fancy slime-banner slime-mdot-fu)))
+    (slime-setup '(slime-fancy slime-banner)))
 
 ;;; Clojure mode
 (add-to-list 'load-path "~/local/share/emacs/site-lisp/clojure-mode/")
