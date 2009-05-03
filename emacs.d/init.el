@@ -27,10 +27,22 @@
 ;;; Provide a useful error trace if init fails
 (setq debug-on-error t)
 
-;; (if (require 'color-theme nil t)
-;;     (progn
-;;       (color-theme-initialize)
-;;       (color-theme-comidia)))
+;;; Pretty colors...
+;;;
+;;; Arjen
+;;; Billw
+;;; Black
+;;; Cheap Goldenrod
+;;; Hober
+;;; Infodoc
+;;; Resolve
+;;; Robin Hood
+;;; Subtle Hacker
+(require 'color-theme nil t)
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-comidia)))
 
 ;;; Set local load path...
 (add-to-list 'load-path "~/local/share/emacs/site-lisp/")
