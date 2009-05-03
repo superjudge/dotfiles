@@ -28,21 +28,11 @@
 (setq debug-on-error t)
 
 ;;; Pretty colors...
-;;;
-;;; Arjen
-;;; Billw
-;;; Black
-;;; Cheap Goldenrod
-;;; Hober
-;;; Infodoc
-;;; Resolve
-;;; Robin Hood
-;;; Subtle Hacker
-(require 'color-theme nil t)
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)
-     (color-theme-comidia)))
+;; (require 'color-theme nil t)
+;; (eval-after-load "color-theme"
+;;   '(progn
+;;      (color-theme-initialize)
+;;      (color-theme-comidia)))
 
 ;;; Set local load path...
 (add-to-list 'load-path "~/local/share/emacs/site-lisp/")
