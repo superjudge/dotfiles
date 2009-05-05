@@ -159,7 +159,14 @@
 ;(add-to-list 'load-path "~/work/lisp/slime/contrib")
 (if (require 'slime nil t)
     ;;(slime-setup '(slime-repl)))
-    (slime-setup '(slime-fancy slime-banner)))
+    (progn
+      (slime-setup '(slime-fancy slime-banner))
+
+      ;; To use other Lisps...
+      ;; Incidentally, you can then choose different Lisps with
+      ;;   M-- M-x slime <tab>
+      (add-to-list 'slime-lisp-implementations
+		   '(sbcl   ("/opt/local/bin/sbcl")))))
 
 ;;; Clojure mode
 (add-to-list 'load-path "~/local/share/emacs/site-lisp/clojure-mode/")
@@ -177,12 +184,6 @@
 (setq swank-clojure-extra-classpaths (list "~/work/lisp/programming-clojure"))
 (setq swank-clojure-extra-vm-args "-server -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8888")
 (require 'swank-clojure-autoload nil t)
-
-;; To use other Lisps...
-;; Incidentally, you can then choose different Lisps with
-;;   M-- M-x slime <tab>
-(add-to-list 'slime-lisp-implementations
-             '(sbcl   ("/opt/local/bin/sbcl")))
 
 ;;; Set-up Erlang mode
 (add-to-list 'load-path "~/local/share/emacs/site-lisp/erlang/")
