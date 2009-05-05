@@ -1,4 +1,4 @@
-;; -*- Mode: Emacs-Lisp, Coding: utf-8 -*-
+;; -*- mode: emacs-lisp; coding: utf-8 -*-
 
 ;; Copyright (c) 2009, Johan Liseborn <johan.liseborn@gmail.com>
 ;;
@@ -51,13 +51,17 @@
 (add-hook 'write-file-hook 'time-stamp)
 
 (diary)
-(require 'erc)
+(require 'erc nil t)
 (column-number-mode t)
 ;(auto-compression-mode t)
 (iswitchb-mode t)
 (winner-mode )
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+
+;;; Setup speedbar
+(if (require 'speedbar nil t)
+    (global-set-key "\M-s" 'speedbar-get-focus))
 
 ;;; Indent using spaces only
 (setq-default indent-tabs-mode t)
