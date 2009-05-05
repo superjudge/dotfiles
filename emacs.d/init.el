@@ -14,26 +14,58 @@
 ;; ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 ;; OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-(if (require 'color-theme nil t)
-    (color-theme-comidia))
+;;						    8
+;;					       	    8
+;; .oPYo. 8    8 .oPYo. .oPYo. 8oPYo. 8 8    8 .oPYo8 .oPYo. .oPYo.
+;; Yb..	  8    8 8    8	8oooo8 8'     8	8    8 8    8 8    8 8oooo8
+;;   'Yb. 8    8 8    8	8.     8      8	8    8 8    8 8    8 8
+;; 'YooP' 'YooP' 8YooP'	'Yooo' 8      8	'YooP' 'YooP' 'YooP8 'YooP'
+;; ......:......:8......:.....:......:8........:......:...:8.:....:
+;; ::::::::::::::8:::::::::::::::'YooP':::::::::::::::'YooP':::::::
+;; ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+;;; Provide a useful error trace if init fails
+(setq debug-on-error t)
+
+;;; Pretty colors...
+;; (require 'color-theme nil t)
+;; (eval-after-load "color-theme"
+;;   '(progn
+;;      (color-theme-initialize)
+;;      (color-theme-comidia)))
+
+;;; Set local load path...
+(add-to-list 'load-path "~/local/share/emacs/site-lisp/")
+
+;;; Put custom.el in emacs.d...
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
-;;; A nice startup message
-(defun emacs-reloaded ()
-  (animate-string (concat ";; Initialization successful. Welcome to "
-                          (substring (emacs-version) 0 16)
-                          ".")
-                  0 1)
+;;; A nice startup message...
+(defun superjudge-reloaded ()
+  (animate-string
+   (concat
+    ";;                                                  8\n"
+    ";;                                                  8\n"
+    ";; .oPYo. 8    8 .oPYo. .oPYo. 8oPYo. 8 8    8 .oPYo8 .oPYo. .oPYo.\n"
+    ";; Yb..   8    8 8    8 8oooo8 8'     8 8    8 8    8 8    8 8oooo8\n"
+    ";;   'Yb. 8    8 8    8 8.     8      8 8    8 8    8 8    8 8\n"
+    ";; 'YooP' 'YooP' 8YooP' 'Yooo' 8      8 'YooP' 'YooP' 'YooP8 'YooP'\n"
+    ";; ......:......:8......:.....:......:8........:......:...:8.:....:\n"
+    ";; ::::::::::::::8:::::::::::::::'YooP':::::::::::::::'YooP':::::::\n"
+    ";; ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n"
+    ";; Initialization successful. Welcome to "
+    (substring (emacs-version) 0 16)
+    ".")
+   0 0)
+  (end-of-buffer)
   (newline-and-indent)
-  (newline-and-indent)
-  ;; We do not like sloppy whitespace
-  (setq-default show-trailing-whitespace t))
-(add-hook 'after-init-hook 'emacs-reloaded)
+  (newline-and-indent))
+
+(add-hook 'after-init-hook 'superjudge-reloaded)
 (add-hook 'after-init-hook 'server-start)
 
-;;; Setup coding for international
+;;; Setup encoding for international
 (set-language-environment 'utf-8)
 (set-terminal-coding-system 'utf-8)
 
@@ -41,15 +73,31 @@
 (add-hook 'c++-mode-hook 'turn-on-font-lock)
 (add-hook 'c-mode-hook 'turn-on-font-lock)
 (add-hook 'emacs-lisp-mode-hook 'turn-on-font-lock)
+(add-hook 'emacs-lisp-mode-hook '(lambda () (setq show-trailing-whitespace t)))
 (add-hook 'shell-script-mode-hook 'turn-on-font-lock)
 (add-hook 'cperl-mode-hook 'turn-on-font-lock)
 (add-hook 'python-mode-hook 'turn-on-font-lock)
+(add-hook 'python-mode-hook '(lambda () (setq show-trailing-whitespace t)))
 (add-hook 'html-mode-hook 'turn-on-font-lock)
 (add-hook 'LaTeX-mode-hook 'turn-on-font-lock)
 (add-hook 'java-mode-hook 'turn-on-font-lock)
 (add-hook 'php-mode-hook 'turn-on-font-lock)
 (add-hook 'write-file-hook 'time-stamp)
 
+;;; Auto-insert
+(require 'autoinsert)
+(auto-insert-mode)
+(setq auto-insert-directory "~/.emacs.d/templates/")
+(setq auto-insert-query nil)
+(define-auto-insert "\.py" "python.py")
+
+;;; Calendar & Time stuff...
+(setq calendar-latitude 59.3)
+(setq calendar-longitude 18.4)
+(setq calendar-location-name "Gustavsberg, Sweden")
+;(setq timeclock-modeline-display t)
+
+(setq diary-file "~/.diary")
 (diary)
 (require 'erc nil t)
 (column-number-mode t)
@@ -69,9 +117,6 @@
 ;;; Visible bell only
 (setq visible-bell t)
 
-;;; Provide a useful error trace if init fails
-(setq debug-on-error t)
-
 ;;; Set abbrevs file name and auto-save
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
 ;;(add-hook 'text-mode-hook (lambda () (abbrev-mode 1)))
@@ -86,7 +131,6 @@
 ;;; Start scrolling when 2 lines from top/bottom
 ;(setq scroll-margin 2)
 ;(setq scroll-step 1)
-(blink-cursor-mode nil)
 
 ;;; Set so when moving by page, last visible line is highlighted.
 ;(load "highlight-context-line.el")
@@ -96,50 +140,56 @@
       '(".o" ".elc" ".class" "java~" ".ps" ".abs" ".mx" ".~jv" ".pyc" ))
 
 ;;; Compile init.el if needed
-(defun autocompile nil
-  "compile itself if ~/.emacs.d/init.el"
-  (interactive)
-  (require 'bytecomp)
-  (if (string= (buffer-file-name)
-               (expand-file-name (concat default-directory "init.el")))
-      (byte-compile-file (buffer-file-name))))
+;; (defun autocompile nil
+;;   "compile itself if ~/.emacs.d/init.el"
+;;   (interactive)
+;;   (require 'bytecomp)
+;;   (if (string= (buffer-file-name)
+;;                (expand-file-name (concat default-directory "init.el")))
+;;       (byte-compile-file (buffer-file-name))))
 
-(add-hook 'after-save-hook 'autocompile)
+;; (add-hook 'after-save-hook 'autocompile)
 
 ;(require 'jde)
 
-;;; Clojure mode
-;(add-to-list 'load-path "~/work/lisp/clojure-mode")
-;(require 'clojure-auto)
-;(autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
-;(add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
-
-;;; Slime
+;;; Setup Slime
+(add-to-list 'load-path "~/local/share/emacs/site-lisp/slime/")
+(add-to-list 'load-path "~/local/share/emacs/site-lisp/slime/contrib/")
 ;(add-to-list 'load-path "~/work/lisp/slime/")
 ;(add-to-list 'load-path "~/work/lisp/slime/contrib")
-;(require 'slime)
-;(slime-setup '(slime-repl))
+(if (require 'slime nil t)
+    ;;(slime-setup '(slime-repl)))
+    (slime-setup '(slime-fancy slime-banner)))
+
+;;; Clojure mode
+(add-to-list 'load-path "~/local/share/emacs/site-lisp/clojure-mode/")
+;(add-to-list 'load-path "~/work/lisp/clojure-mode")
+(if (require 'clojure-mode nil t)
+    (progn (autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
+	   (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))))
 
 ;;; Clojure Swank
+(add-to-list 'load-path "~/local/share/emacs/site-lisp/swank-clojure/")
 ;(add-to-list 'load-path "~/work/lisp/swank-clojure")
-;(setq swank-clojure-binary "/Users/mjl/bin/clj")
-;(setq swank-clojure-jar-path "/Users/mjl/work/lisp/clojure-read-only/clojure.jar")
-;alternatively, you can set up the clojure wrapper script and use that: 
-;(setq swank-clojure-extra-classpaths (list "/Users/mjl/work/lisp/programming-clojure"))
-;(setq swank-clojure-extra-vm-args "-server -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8888")
-;(require 'swank-clojure-autoload)
+(setq swank-clojure-binary "~/bin/clj")
+(setq swank-clojure-jar-path "~/work/lisp/clojure-read-only/clojure.jar")
+;;alternatively, you can set up the clojure wrapper script and use that:
+(setq swank-clojure-extra-classpaths (list "~/work/lisp/programming-clojure"))
+(setq swank-clojure-extra-vm-args "-server -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8888")
+(require 'swank-clojure-autoload nil t)
 
 ;; To use other Lisps...
 ;; Incidentally, you can then choose different Lisps with
 ;;   M-- M-x slime <tab>
-;(add-to-list 'slime-lisp-implementations
-;             '(sbcl   ("/opt/local/bin/sbcl")))
+(add-to-list 'slime-lisp-implementations
+             '(sbcl   ("/opt/local/bin/sbcl")))
 
 ;;; Set-up Erlang mode
+(add-to-list 'load-path "~/local/share/emacs/site-lisp/erlang/")
 ;(setq load-path (cons "/opt/local/lib/erlang/lib/tools-2.6.2/emacs" load-path))
-;(setq erlang-root-dir "/opt/local/lib/erlang")
-;(setq exec-path (cons "/opt/local/lib/erlang/bin" exec-path))
-;(require 'erlang-start)
+(setq erlang-root-dir "/opt/local/lib/erlang")
+(setq exec-path (cons "/opt/local/lib/erlang/bin" exec-path))
+(require 'erlang-start nil t)
 
 ;;; Setup Haskell
 (setq auto-mode-alist
@@ -172,4 +222,4 @@
 (add-to-list 'desktop-modes-not-to-save 'Info-mode)
 (setq desktop-files-not-to-save "\\(^/[^/:]*:\\|bbdb\\)")
 
-(setq debug-on-error nil) ;was set t at top of buffer
+(setq debug-on-error nil) ; was set t at top of buffer
