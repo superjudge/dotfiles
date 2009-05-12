@@ -17,6 +17,7 @@
  '(inhibit-startup-screen t)
  '(menu-bar-mode nil)
  '(tool-bar-mode nil)
+ '(scroll-bar-mode nil)
  '(transient-mark-mode t)
  '(user-mail-address "johan.liseborn@gmail.com"))
 (custom-set-faces

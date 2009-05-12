@@ -99,17 +99,29 @@
 
 (setq diary-file "~/.diary")
 (diary)
-(require 'erc nil t)
+
+(when (require 'erc nil t)
+  (require 'erc-match nil t)
+  (setq erc-keywords '("superjudge"))
+;;   (setq erc-pals '())
+;;   (setq erc-fools '())
+  (erc-match-mode)
+
+  (setq erc-autojoin-channels-alist
+	'(("freenode.net" "#django" "#python")))
+;;   (erc :server "irc.freenode.net" :port 6667 :nick "superjudge")
+)
+
 (column-number-mode t)
 ;(auto-compression-mode t)
 (iswitchb-mode t)
-(winner-mode )
+(winner-mode)
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 ;;; Setup speedbar
-(if (require 'speedbar nil t)
-    (global-set-key "\M-s" 'speedbar-get-focus))
+(when (require 'speedbar nil t)
+  (global-set-key "\M-s" 'speedbar-get-focus))
 
 ;;; Indent using spaces only
 (setq-default indent-tabs-mode t)
@@ -157,23 +169,22 @@
 (add-to-list 'load-path "~/local/share/emacs/site-lisp/slime/contrib/")
 ;(add-to-list 'load-path "~/work/lisp/slime/")
 ;(add-to-list 'load-path "~/work/lisp/slime/contrib")
-(if (require 'slime nil t)
-    ;;(slime-setup '(slime-repl)))
-    (progn
-      (slime-setup '(slime-fancy slime-banner))
+(when (require 'slime nil t)
+  ;;(slime-setup '(slime-repl)))
+  (slime-setup '(slime-fancy slime-banner))
 
-      ;; To use other Lisps...
-      ;; Incidentally, you can then choose different Lisps with
-      ;;   M-- M-x slime <tab>
-      (add-to-list 'slime-lisp-implementations
-		   '(sbcl   ("/opt/local/bin/sbcl")))))
+  ;; To use other Lisps...
+  ;; Incidentally, you can then choose different Lisps with
+  ;;   M-- M-x slime <tab>
+  (add-to-list 'slime-lisp-implementations
+	       '(sbcl   ("/opt/local/bin/sbcl"))))
 
 ;;; Clojure mode
 (add-to-list 'load-path "~/local/share/emacs/site-lisp/clojure-mode/")
 ;(add-to-list 'load-path "~/work/lisp/clojure-mode")
-(if (require 'clojure-mode nil t)
-    (progn (autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
-	   (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))))
+(when (require 'clojure-mode nil t)
+  (autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
+  (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode)))
 
 ;;; Clojure Swank
 (add-to-list 'load-path "~/local/share/emacs/site-lisp/swank-clojure/")
@@ -209,6 +220,14 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 ;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 (add-hook 'haskell-mode-hook 'turn-on-font-lock)
+
+;;; Yegge key-bindings
+(global-set-key "\C-x\C-m" 'execute-extended-command)
+(global-set-key "\C-c\C-m" 'execute-extended-command)
+(global-set-key "\C-w" 'backward-kill-word)
+(global-set-key "\C-x\C-k" 'kill-region)
+(global-set-key "\C-c\C-k" 'kill-region)
+(global-set-key [f5] 'call-last-kbd-macro)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Desktop restore
