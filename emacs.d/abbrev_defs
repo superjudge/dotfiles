@@ -1,4 +1,13 @@
+(define-abbrev-table 'apropos-mode-abbrev-table '(
+    ))
+
 (define-abbrev-table 'makefile-mode-abbrev-table '(
+    ))
+
+(define-abbrev-table 'python-mode-abbrev-table '(
+    ))
+
+(define-abbrev-table 'comint-mode-abbrev-table '(
     ))
 
 (define-abbrev-table 'awk-mode-abbrev-table '(
