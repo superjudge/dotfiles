@@ -1,7 +1,7 @@
-(define-abbrev-table 'apropos-mode-abbrev-table '(
+(define-abbrev-table 'makefile-mode-abbrev-table '(
     ))
 
-(define-abbrev-table 'makefile-mode-abbrev-table '(
+(define-abbrev-table 'apropos-mode-abbrev-table '(
     ))
 
 (define-abbrev-table 'python-mode-abbrev-table '(

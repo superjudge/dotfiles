@@ -100,6 +100,13 @@
 (setq diary-file "~/.diary")
 (diary)
 
+;; Org mode
+(add-hook 'org-mode-hook 'turn-on-fontlock)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+
+;; ERC
 (when (require 'erc nil t)
   (require 'erc-match nil t)
   (setq erc-keywords '("superjudge"))
@@ -112,10 +119,10 @@
 ;;   (erc :server "irc.freenode.net" :port 6667 :nick "superjudge")
 )
 
-(column-number-mode t)
-;(auto-compression-mode t)
-(iswitchb-mode t)
-(winner-mode)
+;; (column-number-mode t)
+;; ;(auto-compression-mode t)
+;; (iswitchb-mode t)
+;; (winner-mode)
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
