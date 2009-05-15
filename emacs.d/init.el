@@ -28,11 +28,13 @@
 (setq debug-on-error t)
 
 ;;; Pretty colors...
-;; (require 'color-theme nil t)
-;; (eval-after-load "color-theme"
-;;   '(progn
-;;      (color-theme-initialize)
-;;      (color-theme-comidia)))
+(when (require 'color-theme nil t)
+  (load-file "~/.emacs.d/zenburn.el"))
+
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-zenburn)))
 
 ;;; Set local load path...
 (add-to-list 'load-path "~/local/share/emacs/site-lisp/")
