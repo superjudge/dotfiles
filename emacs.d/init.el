@@ -27,21 +27,21 @@
 ;;; Provide a useful error trace if init fails
 (setq debug-on-error t)
 
-;;; Pretty colors...
-(when (require 'color-theme nil t)
-  (load-file "~/.emacs.d/zenburn.el"))
-
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)
-     (color-theme-zenburn)))
-
 ;;; Set local load path...
 (add-to-list 'load-path "~/local/share/emacs/site-lisp/")
 
-;;; Put custom.el in emacs.d...
+;;; Pretty colors...
+(when (require 'color-theme nil t)
+  (load-file "~/.emacs.d/zenburn.el")
+
+  (eval-after-load "color-theme"
+    '(progn
+       ;;(color-theme-initialize)
+       (color-theme-zenburn))))
+
+;;; Put custom.el in emacs.d (Aquamacs already handles this)
 (setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+(load-file custom-file)
 
 ;;; A nice startup message...
 (defun superjudge-reloaded ()
@@ -66,6 +66,43 @@
 
 (add-hook 'after-init-hook 'superjudge-reloaded)
 (add-hook 'after-init-hook 'server-start)
+
+;;; Setup CEDET
+;; See cedet/common/cedet.info for configuration details.
+(when (load-file "~/local/share/emacs/site-lisp/cedet-1.0pre6/common/cedet.el")
+  ;; Enable EDE (Project Management) features
+  (global-ede-mode t)
+
+  ;; Enable EDE for a pre-existing C++ project
+  ;; (ede-cpp-root-project "NAME" :file "~/myproject/Makefile")
+
+  ;; Enabling Semantic (code-parsing, smart completion) features
+  ;; Select one of the following:
+
+  ;; * This enables the database and idle reparse engines
+  ;; (semantic-load-enable-minimum-features)
+
+  ;; * This enables some tools useful for coding, such as summary mode
+  ;;   imenu support, and the semantic navigator
+  ;; (semantic-load-enable-code-helpers)
+
+  ;; * This enables even more coding tools such as intellisense mode
+  ;;   decoration mode, and stickyfunc mode (plus regular code helpers)
+  (semantic-load-enable-gaudy-code-helpers)
+
+  ;; * This enables the use of Exuberent ctags if you have it installed.
+  ;;   If you use C++ templates or boost, you should NOT enable it.
+  (semantic-load-enable-all-exuberent-ctags-support)
+
+  (semantic-add-system-include "~/.virtualenvs/wooter/lib/python2.6/site-packages" 'python-mode)
+
+  ;; Enable SRecode (Template management) minor-mode.
+  (global-srecode-minor-mode 1))
+
+;;; Setup ECB
+(add-to-list 'load-path "~/local/share/emacs/site-lisp/ecb-2.40")
+(require 'ecb nil t)
+;;;(require 'ecb-autoloads nil t)
 
 ;;; Setup encoding for international
 (set-language-environment 'utf-8)
@@ -117,7 +154,15 @@
   (erc-match-mode)
 
   (setq erc-autojoin-channels-alist
-	'(("freenode.net" "#django" "#python")))
+        '(("freenode.net"
+           "#django"
+           "#django-dev"
+           "#python"
+           "#jquery"
+           "#emacs"
+           "#couchdb"
+           "#clojure"
+           "#erlang")))
 ;;   (erc :server "irc.freenode.net" :port 6667 :nick "superjudge")
 )
 
@@ -238,6 +283,11 @@
 (global-set-key "\C-c\C-k" 'kill-region)
 (global-set-key [f5] 'call-last-kbd-macro)
 
+(when (boundp 'aquamacs-version)
+  (tabbar-mode nil)
+  (one-buffer-one-frame-mode nil)
+  (setq mac-command-modifier 'meta))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Desktop restore
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -250,5 +300,8 @@
 (add-to-list 'desktop-modes-not-to-save 'erc-mode)
 (add-to-list 'desktop-modes-not-to-save 'Info-mode)
 (setq desktop-files-not-to-save "\\(^/[^/:]*:\\|bbdb\\)")
+
+;; (unless (zenburn-format-spec-works-p)
+;;   (zenburn-define-format-spec))
 
 (setq debug-on-error nil) ; was set t at top of buffer
