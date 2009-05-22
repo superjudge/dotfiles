@@ -18,7 +18,7 @@
  '(iswitchb-mode t)
  '(menu-bar-mode nil)
  '(scroll-bar-mode nil)
- '(semantic-ectag-program "/opt/local/bin/ctags")
+; '(semantic-ectag-program "/opt/local/bin/ctags")
  '(size-indication-mode t)
  '(tool-bar-mode nil)
  '(transient-mark-mode t)
