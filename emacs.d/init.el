@@ -88,7 +88,9 @@
 
   ;; * This enables even more coding tools such as intellisense mode
   ;;   decoration mode, and stickyfunc mode (plus regular code helpers)
-  (semantic-load-enable-gaudy-code-helpers)
+  ;; (semantic-load-enable-gaudy-code-helpers)
+
+  (semantic-load-enable-excessive-code-helpers)
 
   ;; * This enables the use of Exuberent ctags if you have it installed.
   ;;   If you use C++ templates or boost, you should NOT enable it.
@@ -115,13 +117,20 @@
 (add-hook 'emacs-lisp-mode-hook '(lambda () (setq show-trailing-whitespace t)))
 (add-hook 'shell-script-mode-hook 'turn-on-font-lock)
 (add-hook 'cperl-mode-hook 'turn-on-font-lock)
-(add-hook 'python-mode-hook 'turn-on-font-lock)
-(add-hook 'python-mode-hook '(lambda () (setq show-trailing-whitespace t)))
 (add-hook 'html-mode-hook 'turn-on-font-lock)
 (add-hook 'LaTeX-mode-hook 'turn-on-font-lock)
 (add-hook 'java-mode-hook 'turn-on-font-lock)
 (add-hook 'php-mode-hook 'turn-on-font-lock)
 (add-hook 'write-file-hook 'time-stamp)
+
+;;; Python
+(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
+(setq interpreter-mode-alist (cons '("python" . python-mode)
+				   interpreter-mode-alist))
+(autoload 'python-mode "python-mode" "Python editing mode." t)
+(add-hook 'python-mode-hook 'turn-on-font-lock)
+(add-hook 'python-mode-hook '(lambda () (setq show-trailing-whitespace t)))
+(require 'ipython)
 
 ;;; Auto-insert
 ;; (require 'autoinsert)
@@ -161,6 +170,7 @@
            "#jquery"
            "#emacs"
            "#couchdb"
+	   "#mongodb"
            "#clojure"
            "#erlang")))
 ;;   (erc :server "irc.freenode.net" :port 6667 :nick "superjudge")
@@ -251,10 +261,16 @@
 (require 'swank-clojure-autoload nil t)
 
 ;;; Set-up Erlang mode
-(add-to-list 'load-path "~/local/share/emacs/site-lisp/erlang/")
-;(setq load-path (cons "/opt/local/lib/erlang/lib/tools-2.6.2/emacs" load-path))
-(setq erlang-root-dir "/opt/local/lib/erlang")
-(setq exec-path (cons "/opt/local/lib/erlang/bin" exec-path))
+(cond
+ ((string-match "linux-gnu" system-configuration)
+  (add-to-list 'load-path "~/local/share/emacs/site-lisp/erlang/")
+  (setq erlang-root-dir "/usr/local/lib/erlang")
+  (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path)))
+ ((string-match "darwin" system-configuration)
+  (add-to-list 'load-path "~/local/share/emacs/site-lisp/erlang/")
+  (setq erlang-root-dir "/opt/local/lib/erlang")
+  (setq exec-path (cons "/opt/local/lib/erlang/bin" exec-path))))
+
 (require 'erlang-start nil t)
 
 ;;; Setup Haskell
