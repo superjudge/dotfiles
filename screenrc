@@ -3,11 +3,11 @@
 startup_message off
 
 # Remap the escape key
-escape ^Oo
+#escape ^Oo
 # escape ^``
 # escape 
-# escape ``
-#escape ~~
+escape ``
+# escape ~~
 #escape k9k9
 
 # UTF stuff

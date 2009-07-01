@@ -266,7 +266,7 @@
   (add-to-list 'load-path "~/local/share/emacs/site-lisp/erlang/")
   (setq erlang-root-dir "/usr/local/lib/erlang")
   (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path)))
- ((string-match "darwin" system-configuration)
+ ((string-match "apple-darwin" system-configuration)
   (add-to-list 'load-path "~/local/share/emacs/site-lisp/erlang/")
   (setq erlang-root-dir "/opt/local/lib/erlang")
   (setq exec-path (cons "/opt/local/lib/erlang/bin" exec-path))))
