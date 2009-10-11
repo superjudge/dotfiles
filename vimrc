@@ -70,6 +70,12 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
+" Setup tabbing
+set sw=4
+set sts=4
+set expandtab
+set smarttab
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
@@ -80,6 +86,9 @@ if has("autocmd")
   filetype plugin indent on
   set ofu=syntaxcomplete#Complete
 
+  " Makefile settingss....
+  autocmd FileType make setlocal noexpandtab sw=8 sts=8
+ 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
   au!
@@ -118,13 +127,6 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-" Setup tabbing
-set sw=4
-set sts=4
-set expandtab
-set smarttab
-autocmd FileType make setlocal noexpandtab sw=8 sts=8
-
 " Setup a pretty status line
 set statusline=%F%m%r%h%w%=[%{&ff}]\ [%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set laststatus=2
@@ -153,7 +155,9 @@ let g:clj_paren_rainbow = 1
 " Fuzzy
 map <leader>b :FufBuffer<CR>
 map <leader>f :FufFile<CR>
-" map <leader>t :FufTag<CR>
+map <leader>m :FufMruFile<CR>
+map <leader>t :FufTag<CR>
+let g:fuf_modesDisable = [ 'mrucmd', ]
 
 " NERD Tree
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
@@ -162,4 +166,7 @@ map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 map T :TaskList<CR>
 map P :TlistToggle<CR>
 
+" Folding
+" nnoremap <space> za
+" vnoremap <space> zf
 
