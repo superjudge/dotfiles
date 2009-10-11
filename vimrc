@@ -78,6 +78,7 @@ if has("autocmd")
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
+  set ofu=syntaxcomplete#Complete
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
@@ -122,10 +123,26 @@ set sw=4
 set sts=4
 set expandtab
 set smarttab
-au FileType make setlocal noexpandtab sw=8 sts=8
+autocmd FileType make setlocal noexpandtab sw=8 sts=8
+
+" Setup a pretty status line
+set statusline=%F%m%r%h%w%=[%{&ff}]\ [%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set laststatus=2
 
 " Automatically reload changed files
 set autoread
+
+let mapleader = ","
+"let maplocalleader = ","
+
+" Python
+let python_highlight_all = 1
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+
+" SuperTab
+let g:SuperTabDefaultCompletionType='context' 
+let g:SuperTabRetainCompletionDuration='completion'
+" let g:SuperTabContextDefaultCompletionType='context'
 
 " Clojure
 let g:clj_want_gorilla = 1
@@ -133,8 +150,16 @@ let g:clj_highlight_builtins = 1
 let g:clj_highlight_contrib = 1
 let g:clj_paren_rainbow = 1
 
-" Python
-let python_highlight_all = 1
+" Fuzzy
+map <leader>b :FufBuffer<CR>
+map <leader>f :FufFile<CR>
+" map <leader>t :FufTag<CR>
 
-"let maplocalleader = ","
+" NERD Tree
+map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
+
+" Tasklist
+map T :TaskList<CR>
+map P :TlistToggle<CR>
+
 
