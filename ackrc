@@ -1,0 +1,4 @@
+--sort-files
+--color
+--pager=less -r
+--smart-case
