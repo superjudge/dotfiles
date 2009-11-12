@@ -8,6 +8,10 @@ manpath=( /opt/local/man "$manpath[@]" )
 export MANPATH
 typeset -U manpath
 
+# Go
+export GOOS=darwin
+export GOARCH=amd64
+
 # Setup Erlang
 export ERL_LIBS=/Users/mjl/work/erlang/mochiweb-read-only/:/Users/mjl/work/erlang/erlyweb-read-only/
 

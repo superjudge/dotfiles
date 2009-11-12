@@ -21,3 +21,9 @@ source ~/bin/virtualenvwrapper_bashrc
 
 # Load host specific settings
 [[ -f ~/.zsh/hosts/$HOST/zshrc ]] && source ~/.zsh/hosts/$HOST/zshrc
+
+# Setup prompt
+setopt promptsubst
+autoload -U promptinit
+promptinit
+prompt wunjo
