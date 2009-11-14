@@ -1,0 +1,18 @@
+[user]
+    name = Johan Liseborn
+    email = johan.liseborn@gmail.com
+    excludesfile = ~/.gitignore
+
+[alias]
+    co = checkout
+    st = status
+
+    lg = log --graph
+
+    wc = whatchanged
+
+[color]
+    ui = auto
+
+[push]
+    default = current
