@@ -8,6 +8,7 @@
     st = status
 
     lg = log --graph
+    lp = log -p
 
     wc = whatchanged
 
