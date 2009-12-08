@@ -9,8 +9,8 @@ source ~/.zsh/keybindings
 source ~/.zsh/functions
 
 # Setup virtualenv wrapper
-export WORKON_HOME=$HOME/.virtualenvs
-source ~/bin/virtualenvwrapper_bashrc
+# export WORKON_HOME=$HOME/.virtualenvs
+# source ~/bin/virtualenvwrapper_bashrc
 #source /opt/local/bin/virtualenvwrapper_bashrc-2.6
 
 # Load OS specific settings
