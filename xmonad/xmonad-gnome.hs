@@ -147,7 +147,7 @@ myKeys =
          -- Increment the number of windows in the master area
          , ("M-,", sendMessage (IncMasterN 1))
 
-         -- Deincrement the number of windows in the master area
+         -- Decrement the number of windows in the master area
          , ("M-.", sendMessage (IncMasterN (-1)))
 
          -- toggle the status bar gap (used with avoidStruts from Hooks.ManageDocks)
@@ -158,6 +158,7 @@ myKeys =
 
          -- Restart xmonad
          , ("M-q", restart "xmonad" True)
+         , ("M-S-q", spawn "gnome-session-save --gui --logout-dialog")
 
          -- SSH Prompt
          , ("M-C-s", sshPrompt defaultXPConfig)
@@ -167,28 +168,28 @@ myKeys =
          , ("M-s", scratchpadSpawnAction gnomeConfig { terminal = myTerminal })
 
          -- Start terminals
-         , ("M-a", spawn "urxvt -fn 'xft:Consolas:pixelsize=13' -bg '#101010'")
+         , ("M-a", spawn "urxvt -fn 'xft:DejaVu Sans Mono:pixelsize=12' -bg '#101010'")
          , ("M-z", spawn "urxvtcd -e screen -x")
-         , ("M-S-z", spawn "urxvtcd -fn 'xft:Consolas:pixelsize=13' -bg '#101010' -e screen -x")
+         , ("M-S-z", spawn "urxvtcd -fn 'xft:DejaVu Sans Mono:pixelsize=12' -bg '#101010' -e screen -x")
 
          -- Banish mouse pointer
          , ("M-b", banish LowerRight)
 
          -- Window navigation
-         , ("M-<Right>", sendMessage $ Go R)
-         , ("M-<Left>",  sendMessage $ Go L)
-         , ("M-<Up>",    sendMessage $ Go U)
-         , ("M-<Down>",  sendMessage $ Go D)
+         -- , ("M-<Right>", sendMessage $ Go R)
+         -- , ("M-<Left>",  sendMessage $ Go L)
+         -- , ("M-<Up>",    sendMessage $ Go U)
+         -- , ("M-<Down>",  sendMessage $ Go D)
 
-         , ("M-C-<Right>", sendMessage $ Swap R)
-         , ("M-C-<Left>",  sendMessage $ Swap L)
-         , ("M-C-<Up>",    sendMessage $ Swap U)
-         , ("M-C-<Down>",  sendMessage $ Swap D)
+         -- , ("M-C-<Right>", sendMessage $ Swap R)
+         -- , ("M-C-<Left>",  sendMessage $ Swap L)
+         -- , ("M-C-<Up>",    sendMessage $ Swap U)
+         -- , ("M-C-<Down>",  sendMessage $ Swap D)
 
-         , ("M-C-S-<Right>", sendMessage $ Move R)
-         , ("M-C-S-<Left>",  sendMessage $ Move L)
-         , ("M-C-S-<Up>",    sendMessage $ Move U)
-         , ("M-C-S-<Down>",  sendMessage $ Move D)
+         -- , ("M-C-S-<Right>", sendMessage $ Move R)
+         -- , ("M-C-S-<Left>",  sendMessage $ Move L)
+         -- , ("M-C-S-<Up>",    sendMessage $ Move U)
+         -- , ("M-C-S-<Down>",  sendMessage $ Move D)
 
          , ("M-m", spawn "echo 'Hi, mom!' | dzen2 -p 4")
          , ("M-<Backspace>", withFocused hide) -- N.B. this is an absurd thing to do
