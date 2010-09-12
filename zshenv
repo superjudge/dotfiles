@@ -14,9 +14,6 @@ export LC_ALL="en_US.UTF-8"
 export LC_TYPE="en_US.UTF-8"
 export LANG="en_us.UTF-8"
 
-# Go
-export GOROOT=$HOME/src/go.hg
-
 # Load OS specific settings
 [[ $OSTYPE == darwin*  && -f ~/.zsh/darwin/zshenv ]]  && source ~/.zsh/darwin/zshenv
 [[ $OSTYPE == linux*   && -f ~/.zsh/linux/zshenv ]]   && source ~/.zsh/linux/zshenv
