@@ -3,32 +3,33 @@
 startup_message off
 
 # Remap the escape key
-#escape ^Oo
-# escape ^``
-# escape 
 escape ``
-# escape ~~
-#escape k9k9
 
-# UTF stuff
-setenv LC_CTYPE en_US.UTF-8
+altscreen on
+autodetach on
+defbce on
+defflow off
+deflogin on
+defmonitor off
+defscrollback 2048
 defutf8 on
-
-# 256 color support
-#attrcolor b ".I"
-#termcapinfo xterm-256color Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm
-#termcapinfo xterm-color Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm
-#defbce "on"
-
+defwrap on
+hardcopy_append on
+hardcopydir ~/tmp/
+msgminwait 0
+msgwait 1
 nethack on
+nonblock on
+vbell off
+verbose on
 
+#caption always "%{= gK} %n %{= wk} %h %=%t %c"
 #caption always "%{= 11}%{+b w}Screen: %n | %h %=%t %c"
 #caption always "%{= wk} %?%-Lw%?%{= kd} %n*%f %t %{= wk}%?%+Lw%? %{= wk}%=%{= Wk} %C%a %m-%d-%Y %{= wk}"
 #caption always "%{+b kG} %=%{-s} %{.K}%-w%{.B}%n %{.G}%t%{.K}%+w%{.G} %{+s} %="
 #caption always “%{kB}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{kB}%?%+Lw%?”
-
-#
 #caption always "%{= wb}%{k} %n | %h %=%t %c"
+
 #hardstatus alwayslastline
 #hardstatus string "%{= kw}%-Lw%{= Wb}%50>%n%f* %t%{= kw}%+Lw%< %{= wK}%-=%D %d %M %Y %c%{-}"
 #hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
@@ -38,12 +39,6 @@ hardstatus alwayslastline '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%
 #hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
 #hardstatus string "%{=b kW}[ %{= Y}$USER @ %H %{b W}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{b W}][%{= Y} %l %{b W}][%{= Y} %d/%m %{Y}%c %{b W}]"
 
-vbell off
-verbose on
-autodetach on
-altscreen on
-defscrollback 1000
-msgminwait 0
 
 shelltitle ''
 
@@ -55,9 +50,9 @@ bell "%c activity -> %n%f %t"
 # windowlist string "Num Name%=Flags"
 # windowlist title "%3n %t%=%f"
 
-setenv DISPLAY ':0'
-
-
+setenv DISPLAY 'localhost:10'
+setenv LC_CTYPE en_US.UTF-8
+term screen
 
 # terminfo and termcap for nice 256 color terminal
 # allow bold colors - necessary for some reason
@@ -68,12 +63,6 @@ termcapinfo xterm|xterm-color|xterm-256color|rxvt|rxvt-unicode|screen|screen-xte
 # erase background with current bg color
 # defbce "on"
 
-defflow off
-deflogin on
-defmonitor off
-defwrap on
-hardcopy_append on
-hardcopydir ~/tmp/
 
 bindkey -k k9  command
 
@@ -109,3 +98,14 @@ setenv SSH_AUTH_SOCK $HOME/.screen/ssh-auth-sock.$HOSTNAME
 #unsetenv KRB5CCNAME
 #setenv KRB5CCNAME "FILE:$HOME/.screen/krb5cc.$HOSTNAME"
 
+screen -t '' 0
+screen -t '' 1
+screen -t '' 2
+screen -t '' 3
+screen -t '' 4
+screen -t '' 5
+screen -t '' 6
+screen -t '' 7
+screen -t '' 8
+screen -t '' 9
+select 0
