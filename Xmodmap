@@ -1,0 +1,12 @@
+!keycode 115 = Super_L
+!keycode 116 = Super_R
+remove Control = Control_R
+!keysym Alt_L = Meta_L
+clear mod5
+clear mod1
+add mod1 = Alt_L
+add mod4 = Control_R
+add mod3 = Alt_R                
+keysym semicolon = semicolon colon odiaeresis Odiaeresis
+keysym apostrophe = apostrophe quotedbl adiaeresis Adiaeresis              
+keysym bracketleft = bracketleft braceleft aring Aring
