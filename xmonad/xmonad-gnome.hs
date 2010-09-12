@@ -196,6 +196,22 @@ myKeys =
 
          , ("M-<Left>", prevWS)
          , ("M-<Right>", nextWS)
+
+         -- Lock Screen
+         , ("M-S-l",    spawn "gnome-screensaver-command -l")
+         -- Logout
+         , ("M1-M-S-l", spawn "gnome-session-save --gui --kill")
+         -- Sleep
+         , ("M1-S-'",   spawn "gnome-power-cmd.sh suspend")
+         -- Reboot
+         , ("M1-S-,",   spawn "gnome-power-cmd.sh reboot")
+         -- Deep Sleep
+         , ("M1-S-.",   spawn "gnome-power-cmd.sh hibernate")
+         -- Death
+         , ("M1-S-p",   spawn "gnome-power-cmd.sh shutdown")
+
+         , ("M-i", spawn "setxkbmap -layout us")
+         , ("M-o", spawn "setxkbmap -layout se")
          ]
 
 -- Mouse bindings
