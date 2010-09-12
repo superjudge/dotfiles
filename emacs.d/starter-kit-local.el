@@ -36,15 +36,20 @@
   (newline-and-indent))
 
 (add-hook 'after-init-hook 'superjudge-reloaded)
+;; (add-hook 'after-init-hook 'server-start)
 
 (global-auto-revert-mode)
 
 ;; Setup pretty colors...
 (zenburn)
 
+(require 'linum)
+;; (global-linum-mode 1)
+
 ;; Turn on font-lock for a bunch of programming modes
 ;; (add-hook 'python-mode-hook 'turn-on-font-lock)
 (add-hook 'python-mode-hook '(lambda () (setq show-trailing-whitespace t)))
+(add-hook 'python-mode-hook 'linum-mode)
 ;; (add-hook 'c++-mode-hook 'turn-on-font-lock)
 ;; (add-hook 'c-mode-hook 'turn-on-font-lock)
 ;; (add-hook 'emacs-lisp-mode-hook 'turn-on-font-lock)
@@ -61,5 +66,28 @@
 (global-set-key (kbd "C-x C-o") (lambda () (interactive) (other-window -1))) ;; back one
 (global-set-key (kbd "C-x O") (lambda () (interactive) (other-window 2)))
 
+;; rcirc
+(require 'rcirc)
+(add-hook 'rcirc-mode-hook (lambda ()
+                             (flyspell-mode 1)))
+(set-face-foreground 'rcirc-my-nick "red" nil)
+(setq rcirc-time-format "%Y-%m-%d %H:%M")
+(setq rcirc-default-nick "superjudge")
+(setq rcirc-default-user-name "superjudge")
+(setq rcirc-default-user-full-name "Johan Liseborn")
+(setq rcirc-startup-channels-alist
+      '(("\\.freenode\\.net" "#emacs" "#rcirc")))
+
+;;; Org mode
+(setq org-agenda-files (list "~/.org/work.org"
+                             "~/.org/home.org"))
+
 ;; Load some games
 (require 'sudoku)
+
+;;; Bookmarks
+(setq bookmark-default-file "~/.emacs.bookmarks"
+      bookmark-save-flag 1)
+
+;;; Sensible screen splitting
+(setq split-width-threshold nil)
