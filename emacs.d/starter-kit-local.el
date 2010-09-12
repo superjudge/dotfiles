@@ -46,6 +46,10 @@
 (require 'linum)
 ;; (global-linum-mode 1)
 
+;;; Setup Wrangler
+(add-to-list 'load-path "/usr/local/share/wrangler/elisp")
+(require 'wrangler)
+
 ;; Turn on font-lock for a bunch of programming modes
 ;; (add-hook 'python-mode-hook 'turn-on-font-lock)
 (add-hook 'python-mode-hook '(lambda () (setq show-trailing-whitespace t)))
