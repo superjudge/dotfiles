@@ -156,7 +156,7 @@ let g:clj_paren_rainbow = 1
 map <leader>b :FufBuffer<CR>
 map <leader>f :FufFile<CR>
 map <leader>m :FufMruFile<CR>
-" map <leader>t :FufTag<CR>
+map <leader>t :FufTag<CR>
 let g:fuf_modesDisable = [ 'mrucmd', ]
 
 " NERD Tree
