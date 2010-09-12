@@ -43,7 +43,8 @@ import qualified XMonad.StackSet as W
 
 -- My preferred terminal program
 -- myTerminal      = "urxvt"
-myTerminal      = "gnome-terminal"
+-- myTerminal      = "gnome-terminal"
+myTerminal = "xfce4-terminal"
 
 -- Window border width in pixels
 myBorderWidth   = 1
