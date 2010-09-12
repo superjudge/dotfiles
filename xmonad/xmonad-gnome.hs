@@ -93,8 +93,8 @@ myKeys =
            ("M-p", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
 
          -- launch emacs
-         , ("M-e", spawn "emacsclient -c")
-         , ("M-e", spawn "emacsclient -c")
+         -- , ("M-e", spawn "emacsclient -c")
+         , ("M-e", spawn "emacs")
 
          -- launch Eclipse
          -- , ("M-e", spawn "eclipse -nosplash")
