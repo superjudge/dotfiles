@@ -42,6 +42,7 @@
 (global-auto-revert-mode)
 (line-number-mode)
 (column-number-mode)
+(setq-default indent-tabs-mode nil)
 
 ;; Setup pretty colors...
 (zenburn)
