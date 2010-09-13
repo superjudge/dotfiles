@@ -38,7 +38,10 @@
 (add-hook 'after-init-hook 'superjudge-reloaded)
 ;; (add-hook 'after-init-hook 'server-start)
 
+;;; Some global defaults
 (global-auto-revert-mode)
+(line-number-mode)
+(column-number-mode)
 
 ;; Setup pretty colors...
 (zenburn)
