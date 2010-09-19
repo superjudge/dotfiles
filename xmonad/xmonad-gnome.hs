@@ -60,20 +60,6 @@ myKeys = [ ("M-p", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
          , ("M-o", spawn "setxkbmap -layout se")
          ]
 
-myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
-
-    -- mod-button1, Set the window to floating mode and move by dragging
-    [ ((modMask, button1), (\w -> focus w >> mouseMoveWindow w))
-
-    -- mod-button2, Raise the window to the top of the stack
-    , ((modMask, button2), (\w -> focus w >> windows W.swapMaster))
-
-    -- mod-button3, Set the window to floating mode and resize by dragging
-    , ((modMask, button3), (\w -> focus w >> mouseResizeWindow w))
-
-    -- you may also bind events to the mouse scroll wheel (button4 and button5)
-    ]
-
 myLayout = desktopLayoutModifiers (tiled ||| Mirror tiled ||| Full)
   where
      -- default tiling algorithm partitions the screen into two panes
@@ -137,9 +123,6 @@ main = xmonad $ gnomeConfig {
          workspaces         = ["α", "β" ,"γ", "δ", "ε", "ζ", "η", "θ", "ι"],
          normalBorderColor  = "grey30",
          focusedBorderColor = "goldenrod",
-
-         -- keys               = myKeys,
-         mouseBindings      = myMouseBindings,
 
          -- hooks, layouts
          layoutHook         = myLayout,
