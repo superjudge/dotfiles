@@ -119,7 +119,6 @@ main = xmonad $ gnomeConfig {
          focusFollowsMouse  = False,
          borderWidth        = 1,
          modMask            = mod4Mask,
-         numlockMask        = mod2Mask,
          workspaces         = ["α", "β" ,"γ", "δ", "ε", "ζ", "η", "θ", "ι"],
          normalBorderColor  = "grey30",
          focusedBorderColor = "goldenrod",
