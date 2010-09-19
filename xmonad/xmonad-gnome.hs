@@ -26,8 +26,8 @@ import System.Exit
 import qualified Data.Map        as M
 import qualified XMonad.StackSet as W
 
-myKeys = [ ("M-p", shellPrompt defaultXPConfig { position = Top })
-         --("M-p", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
+myKeys = [ ("M-p", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
+         , ("M-S-p", shellPrompt defaultXPConfig { position = Top })
 
          -- Restart xmonad
          , ("M-S-q", spawn "gnome-session-save --gui --logout-dialog")
