@@ -38,7 +38,10 @@
 (add-hook 'after-init-hook 'superjudge-reloaded)
 ;; (add-hook 'after-init-hook 'server-start)
 
+;;; Some global defaults
 (global-auto-revert-mode)
+(line-number-mode)
+(column-number-mode)
 
 ;; Setup pretty colors...
 (zenburn)
@@ -50,14 +53,23 @@
 (add-to-list 'load-path "/usr/local/share/wrangler/elisp")
 (require 'wrangler)
 
-;; Turn on font-lock for a bunch of programming modes
-;; (add-hook 'python-mode-hook 'turn-on-font-lock)
-(add-hook 'python-mode-hook '(lambda () (setq show-trailing-whitespace t)))
-(add-hook 'python-mode-hook 'linum-mode)
-(add-hook 'haskell-mode-hook '(lambda () (setq show-trailing-whitespace t)))
-(add-hook 'haskell-mode-hook 'linum-mode)
-(add-hook 'erlang-mode-hook '(lambda () (setq show-trailing-whitespace t)))
-(add-hook 'erlang-mode-hook 'linum-mode)
+(defun my-code-mode-hook ()
+  (setq show-trailing-whitespace t)
+  (linum-mode)
+  (highlight-80+-mode))
+
+(defun my-erlang-mode-hook ()
+  (my-code-mode-hook))
+
+(defun my-haskell-mode-hook ()
+  (my-code-mode-hook))
+
+(defun my-python-mode-hook ()
+  (my-code-mode-hook))
+
+(add-hook 'python-mode-hook 'my-python-mode-hook)
+(add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
+(add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
 ;; (add-hook 'c++-mode-hook 'turn-on-font-lock)
 ;; (add-hook 'c-mode-hook 'turn-on-font-lock)
 ;; (add-hook 'emacs-lisp-mode-hook 'turn-on-font-lock)
