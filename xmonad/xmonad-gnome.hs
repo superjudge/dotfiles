@@ -1,28 +1,20 @@
 -- -*- mode: haskell; coding: utf-8 -*-
 
+import Data.Ratio
+import System.Exit
 import XMonad
-
 import XMonad.Actions.Warp
-
 import XMonad.Config.Desktop
 import XMonad.Config.Gnome
-
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
-
 import XMonad.Layout
-
 import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Prompt.Ssh
-
 import XMonad.Util.EZConfig
 import XMonad.Util.Run (spawnPipe)
-
-import Data.Ratio
-import System.Exit
-
 import qualified Data.Map        as M
 import qualified XMonad.StackSet as W
 
