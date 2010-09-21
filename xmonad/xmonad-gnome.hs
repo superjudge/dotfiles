@@ -113,7 +113,7 @@ main = xmonad $ gnomeConfig {
          modMask            = mod4Mask,
          workspaces         = ["α", "β" ,"γ", "δ", "ε", "ζ", "η", "θ", "ι"],
          normalBorderColor  = "grey30",
-         focusedBorderColor = "goldenrod",
+         focusedBorderColor = "red",
 
          -- hooks, layouts
          layoutHook         = myLayout,
