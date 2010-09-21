@@ -88,16 +88,16 @@
 (global-set-key (kbd "C-x O") (lambda () (interactive) (other-window 2)))
 
 ;; rcirc
-(require 'rcirc)
-(add-hook 'rcirc-mode-hook (lambda ()
-                             (flyspell-mode 1)))
-(set-face-foreground 'rcirc-my-nick "red" nil)
-(setq rcirc-time-format "%Y-%m-%d %H:%M")
-(setq rcirc-default-nick "superjudge")
-(setq rcirc-default-user-name "superjudge")
-(setq rcirc-default-user-full-name "Johan Liseborn")
-(setq rcirc-startup-channels-alist
-      '(("\\.freenode\\.net" "#emacs" "#rcirc")))
+;; (require 'rcirc)
+;; (add-hook 'rcirc-mode-hook (lambda ()
+;;                              (flyspell-mode 1)))
+;; (set-face-foreground 'rcirc-my-nick "red" nil)
+;; (setq rcirc-time-format "%Y-%m-%d %H:%M")
+;; (setq rcirc-default-nick "superjudge")
+;; (setq rcirc-default-user-name "superjudge")
+;; (setq rcirc-default-user-full-name "Johan Liseborn")
+;; (setq rcirc-startup-channels-alist
+;;       '(("\\.freenode\\.net" "#emacs" "#rcirc")))
 
 ;;; Org mode
 (setq org-agenda-files (list "~/.org/work.org"
