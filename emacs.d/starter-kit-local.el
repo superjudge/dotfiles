@@ -44,33 +44,28 @@
 (column-number-mode)
 (setq-default indent-tabs-mode nil)
 
-;; Setup pretty colors...
+;; Setup pretty colors
 (zenburn)
 
 (require 'linum)
-;; (global-linum-mode 1)
 
-;;; Setup Wrangler
-(add-to-list 'load-path "/usr/local/share/wrangler/elisp")
-(require 'wrangler)
+(defun my-code-mode-hook ()
+  (setq show-trailing-whitespace t)
+  (linum-mode)
+  (highlight-80+-mode))
 
-;; (defun my-code-mode-hook ()
-;;   (setq show-trailing-whitespace t)
-;;   (linum-mode)
-;;   (highlight-80+-mode))
+(defun my-erlang-mode-hook ()
+  (my-code-mode-hook))
 
-;; (defun my-erlang-mode-hook ()
-;;   (my-code-mode-hook))
+(defun my-haskell-mode-hook ()
+  (my-code-mode-hook))
 
-;; (defun my-haskell-mode-hook ()
-;;   (my-code-mode-hook))
+(defun my-python-mode-hook ()
+  (my-code-mode-hook))
 
-;; (defun my-python-mode-hook ()
-;;   (my-code-mode-hook))
-
-;; (add-hook 'python-mode-hook 'my-python-mode-hook)
-;; (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
-;; (add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
+(add-hook 'python-mode-hook 'my-python-mode-hook)
+(add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
+(add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
 ;; (add-hook 'c++-mode-hook 'turn-on-font-lock)
 ;; (add-hook 'c-mode-hook 'turn-on-font-lock)
 ;; (add-hook 'emacs-lisp-mode-hook 'turn-on-font-lock)
@@ -83,9 +78,16 @@
 ;; (add-hook 'php-mode-hook 'turn-on-font-lock)
 ;; (add-hook 'write-file-hook 'time-stamp)
 
-;; Window switching
-(global-set-key (kbd "C-x C-o") (lambda () (interactive) (other-window -1))) ;; back one
-(global-set-key (kbd "C-x O") (lambda () (interactive) (other-window 2)))
+;;; Setup Distel
+(when (file-accessible-directory-p "~/src/distel.git")
+  (add-to-list 'load-path "~/src/distel.git/elisp")
+  (require 'distel)
+  (distel-setup))
+
+;;; Setup Wrangler
+(when (file-accessible-directory-p "/usr/local/share/wrangler/elisp")
+  (add-to-list 'load-path "/usr/local/share/wrangler/elisp")
+  (require 'wrangler))
 
 ;; rcirc
 ;; (require 'rcirc)
