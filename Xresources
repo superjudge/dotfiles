@@ -1,0 +1,46 @@
+! Xft.dpi: 94.34
+Xft.dpi: 96.0
+Xft.hinting: 1
+Xft.hintstyle: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+Emacs.fullscreen: maximized
+Emacs.default.attributHeight: 92
+
+! urxvt*font: xft:Bitstream\ Vera\ Sans\ Mono:style=roman:pixelsize=12
+URxvt*meta8: False
+URxvt*modifier: mod1
+URxvt*font: xft:Consolas-11:style=roman
+URxvt*fading: 30
+URxvt*pointerBlank: true
+URxvt*pointerBlankDelay: 1
+URxvt*lineSpace: 0
+URxvt*scrollBar: false
+URxvt*xftAutoHint: true
+URxvt*cursorColor: rgb:df/00/00
+URxvt*foreground: rgb:d0/d0/d0
+URxvt*background: rgb:20/20/20
+URxvt*color0: rgb:20/20/20
+URxvt*color1: rgb:df/00/00
+URxvt*color2: rgb:5f/df/5f
+URxvt*color3: rgb:df/df/00
+URxvt*color4: rgb:00/af/ff
+URxvt*color5: rgb:8b/00/8b
+URxvt*color6: rgb:00/8b/8b
+URxvt*color7: rgb:d0/d0/d0
+URxvt*color8: rgb:00/00/00
+URxvt*color9: rgb:df/87/87
+URxvt*color10: rgb:af/df/87
+URxvt*color11: rgb:df/df/af
+URxvt*color12: rgb:5f/af/df
+URxvt*color13: rgb:df/af/df
+URxvt*color14: rgb:af/df/df
+URxvt*color15: rgb:ff/ff/ff
+URxvt.keysym.M-C-1: command:\033]710;xft:Consolas-11\007\033]711;xft:Consolas-11:weight=200\007
+URxvt.keysym.M-C-2: command:\033]710;xft:Consolas:pixelsize=13\007\033]711;xft:Consolas:pixelsize=13:weight=200\007
+URxvt.keysym.M-C-3: command:\033]710;xft:Consolas-14\007\033]711;xft:Consolas-14:weight=200\007
+
+
+small.URxvt*background: rgb:10/10/10
+small.URxvt*font: xft:Consolas:pixelsize=13:style=roman

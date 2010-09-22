@@ -11,6 +11,8 @@
 
 import IO
 import XMonad
+import XMonad.Config.Desktop (desktopLayoutModifiers)
+import XMonad.Config.Gnome
 import XMonad.Layout
 import XMonad.Layout.Circle
 import XMonad.Layout.Grid
@@ -22,16 +24,20 @@ import XMonad.Layout.WindowNavigation
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers (doCenterFloat, isInProperty, isFullscreen, doFullFloat)
 
 import XMonad.Prompt
+import XMonad.Prompt.Shell
 import XMonad.Prompt.Ssh
 
-import XMonad.Actions.UpdatePointer
+-- import XMonad.Actions.UpdatePointer
 import XMonad.Actions.Warp
 
+-- import XMonad.Util.CustomKeys
 import XMonad.Util.EZConfig
-import XMonad.Util.Run
+import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.Scratchpad (scratchpadSpawnAction, scratchpadManageHook, scratchpadFilterOutWorkspace)
+import XMonad.Util.WorkspaceCompare (getSortByIndex)
 
 -- import XMonad.Actions.CycleWS
 -- import XMonad.Actions.SwapWorkspaces
@@ -46,7 +52,8 @@ import Data.Ratio
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "urxvt"
+-- myTerminal      = "urxvt"
+myTerminal      = "gnome-terminal"
 
 -- Width of the window border in pixels.
 --
@@ -57,7 +64,7 @@ myBorderWidth   = 1
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
 --
-myModMask       = mod3Mask
+myModMask       = mod4Mask
 
 -- The mask for the numlock key. Numlock status is "masked" from the
 -- current modifier status, so the keybindings will work with numlock on or
@@ -83,8 +90,8 @@ myNumlockMask   = mod2Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
--- myWorkspaces    = ["α", "β" ,"γ", "δ", "ε", "ζ", "η", "θ", "ι"]
+-- myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces    = ["α", "β" ,"γ", "δ", "ε", "ζ", "η", "θ", "ι"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -94,103 +101,48 @@ myFocusedBorderColor = "goldenrod"
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
-myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
+-- myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
-    -- launch a terminal
-    [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+--     -- launch a terminal
+--     [ -- ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
-    -- -- launch dmenu
-    -- , ((modm,               xK_p     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
+--     --  Reset the layouts on the current workspace to default
+--     ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
 
-    -- -- launch gmrun
-    -- , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
+--     ]
+--     ++
 
-    -- -- close focused window
-    -- , ((modm .|. shiftMask, xK_c     ), kill)
+--     --
+--     -- mod-[1..9], Switch to workspace N
+--     -- mod-shift-[1..9], Move client to workspace N
+--     --
+--     [((m .|. modm, k), windows $ f i)
+--         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+--         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+--     ++
 
-    --  -- Rotate through the available layout algorithms
-    -- , ((modm,               xK_space ), sendMessage NextLayout)
-
-    --  Reset the layouts on the current workspace to default
-    , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
-
-    -- -- Resize viewed windows to the correct size
-    -- , ((modm,               xK_n     ), refresh)
-
-    -- -- Move focus to the next window
-    -- , ((modm,               xK_Tab   ), windows W.focusDown)
-
-    -- -- Move focus to the next window
-    -- , ((modm,               xK_j     ), windows W.focusDown)
-
-    -- -- Move focus to the previous window
-    -- , ((modm,               xK_k     ), windows W.focusUp  )
-
-    -- -- Move focus to the master window
-    -- , ((modm,               xK_m     ), windows W.focusMaster  )
-
-    -- -- Swap the focused window and the master window
-    -- , ((modm,               xK_Return), windows W.swapMaster)
-
-    -- -- Swap the focused window with the next window
-    -- , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
-
-    -- -- Swap the focused window with the previous window
-    -- , ((modm .|. shiftMask, xK_k     ), windows W.swapUp    )
-
-    -- -- Shrink the master area
-    -- , ((modm,               xK_h     ), sendMessage Shrink)
-
-    -- -- Expand the master area
-    -- , ((modm,               xK_l     ), sendMessage Expand)
-
-    -- -- Push window back into tiling
-    -- , ((modm,               xK_t     ), withFocused $ windows . W.sink)
-
-    -- -- Increment the number of windows in the master area
-    -- , ((modm              , xK_comma ), sendMessage (IncMasterN 1))
-
-    -- -- Deincrement the number of windows in the master area
-    -- , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
-
-    -- -- toggle the status bar gap (used with avoidStruts from Hooks.ManageDocks)
-    -- -- , ((modm , xK_b ), sendMessage ToggleStruts)
-
-    -- -- Quit xmonad
-    -- , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
-
-    -- -- Restart xmonad
-    -- , ((modm              , xK_q     ), restart "xmonad" True)
-
-    -- -- SSH Prompt
-    -- , ((modm .|. shiftMask, xK_s     ), sshPrompt defaultXPConfig)
-
-    ]
-    ++
-
-    --
-    -- mod-[1..9], Switch to workspace N
-    -- mod-shift-[1..9], Move client to workspace N
-    --
-    [((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
-    ++
-
-    --
-    -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
-    -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
-    --
-    [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
-        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+--     --
+--     -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
+--     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
+--     --
+--     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
+--         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+--         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
-myKeys2 = [
--- ("M-S-<Return>", spawn $ XMonad.terminal conf)
+-- myKeys = \conf -> mkKeymap conf $
+myKeys =
+         [ -- Launch terminal
+           -- ("M-S-<Return>", spawn $ XMonad.terminal conf)
 
-          -- launch dmenu
-          ("M-p", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
+           -- launch dmenu
+           ("M-p", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
+
+           -- launch emacs
+           , ("M-e", spawn "emacsclient -c")
+
+          -- launch Eclipse
+          -- , ("M-e", spawn "eclipse -nosplash")
 
           -- launch gmrun
           , ("M-S-p", spawn "gmrun")
@@ -253,17 +205,19 @@ myKeys2 = [
           , ("M-q", restart "xmonad" True)
 
           -- SSH Prompt
-          , ("M-S-s", sshPrompt defaultXPConfig)
+          , ("M-C-s", sshPrompt defaultXPConfig)
+          , ("M-C-x", shellPrompt defaultXPConfig { position = Top })
 
           -- Scratchpad
-          , ("M-s", scratchpadSpawnAction defaultConfig { terminal = myTerminal })
+          , ("M-s", scratchpadSpawnAction gnomeConfig { terminal = myTerminal })
 
           -- Start terminals
           , ("M-a", spawn "urxvt -fn 'xft:Consolas:pixelsize=13' -bg '#101010'")
           , ("M-z", spawn "urxvtcd -e screen -x")
           , ("M-S-z", spawn "urxvtcd -fn 'xft:Consolas:pixelsize=13' -bg '#101010' -e screen -x")
 
-          , ("M-b", warpToWindow 1 1)
+          -- Banish mouse pointer
+          , ("M-b", banish LowerRight)
 
           -- Window navigation
           , ("M-<Right>", sendMessage $ Go R)
@@ -280,8 +234,19 @@ myKeys2 = [
           , ("M-C-S-<Left>",  sendMessage $ Move L)
           , ("M-C-S-<Up>",    sendMessage $ Move U)
           , ("M-C-S-<Down>",  sendMessage $ Move D)
-
           ]
+
+         -- ++
+         -- -- "M-[1..9,0,-]" -- Switch to workspace N
+         -- -- "M-S-[1..9,0,-]" -- Move client to workspace N
+         -- -- "M-C-[1..9,0,-]" -- Copy client to workspace N
+         -- [("M-" ++ m ++ [k], windows $ f i)
+         --      | (i, k) <- zip (XMonad.workspaces conf) (['1' .. '9'] ++ ['0', '-'])
+         -- , (f, m) <- [ (W.greedyView, "")
+         --             , (W.shift, "S-")
+         --             , (copy, "C-")
+         --             ]
+         -- ]
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
@@ -311,7 +276,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = smartBorders $ avoidStruts (layoutHints (tiled ||| Mirror tiled ||| Circle ||| magnify Grid ||| Full))
+myLayout = desktopLayoutModifiers $ smartBorders $ avoidStruts (layoutHints (tiled ||| Mirror tiled ||| Circle ||| magnify Grid ||| Full))
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled = Tall nmaster delta ratio
@@ -323,9 +288,12 @@ myLayout = smartBorders $ avoidStruts (layoutHints (tiled ||| Mirror tiled ||| C
      delta = 3/100
 
      -- Default proportion of screen occupied by master pane
-     ratio = toRational (2 / 1 + sqrt (5)::Double)
+     ratio = toRational (2 / (1 + sqrt (5))::Double)
 
      magnify = magnifiercz (12%10)
+
+q_eclipse     = className =? "Eclipse"
+q_eclipse_spl = title     =? "." <&&> className =? ""
 
 ------------------------------------------------------------------------
 -- Window rules:
@@ -345,10 +313,14 @@ myLayout = smartBorders $ avoidStruts (layoutHints (tiled ||| Mirror tiled ||| C
 myManageHook = manageDocks <+>
                scratchpadManageHook (W.RationalRect 0.25 0.375 0.5 0.35) <+>
                composeAll
-    [ className =? "MPlayer"        --> doFloat
+    [ manageHook gnomeConfig
+    , className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
+    , q_eclipse_spl                 --> doCenterFloat
     , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
+    , resource  =? "kdesktop"       --> doIgnore
+    , isFullscreen                  --> doFullFloat
+    ]
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -384,10 +356,13 @@ myStartupHook = return ()
 main = do
   xmobar <- spawnPipe "xmobar"
   xmonad $ defaults
-         {
-           logHook = dynamicLogWithPP xmobarPP { ppOutput = hPutStrLn xmobar } >> updatePointer (Relative 1 1)
-         }
-       `additionalKeysP` myKeys2
+             {
+               logHook = dynamicLogWithPP $ sjanssenPP
+                         { ppSort = fmap (.scratchpadFilterOutWorkspace) getSortByIndex
+                         , ppOutput = hPutStrLn xmobar
+                         }
+             }
+             `additionalKeysP` myKeys
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
@@ -395,7 +370,7 @@ main = do
 --
 -- No need to modify this.
 --
-defaults = defaultConfig {
+defaults = gnomeConfig {
       -- simple stuff
       terminal           = myTerminal,
       focusFollowsMouse  = myFocusFollowsMouse,
@@ -406,8 +381,7 @@ defaults = defaultConfig {
       normalBorderColor  = myNormalBorderColor,
       focusedBorderColor = myFocusedBorderColor,
 
-      -- key bindings
-      keys               = myKeys,
+      -- keys               = myKeys,
       mouseBindings      = myMouseBindings,
 
       -- hooks, layouts

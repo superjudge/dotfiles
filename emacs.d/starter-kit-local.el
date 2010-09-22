@@ -1,6 +1,6 @@
 ;; -*- mode: emacs-lisp; coding: utf-8 -*-
 
-;; Copyright (c) 2009, Johan Liseborn <johan.liseborn@gmail.com>
+;; Copyright (c) 2009, 2010 Johan Liseborn <johan.liseborn@gmail.com>
 ;;
 ;; Permission to use, copy, modify, and/or distribute this software for any
 ;; purpose with or without fee is hereby granted, provided that the above
@@ -36,15 +36,36 @@
   (newline-and-indent))
 
 (add-hook 'after-init-hook 'superjudge-reloaded)
+;; (add-hook 'after-init-hook 'server-start)
 
+;;; Some global defaults
 (global-auto-revert-mode)
+(line-number-mode)
+(column-number-mode)
+(setq-default indent-tabs-mode nil)
 
-;; Setup pretty colors...
+;; Setup pretty colors
 (zenburn)
 
-;; Turn on font-lock for a bunch of programming modes
-;; (add-hook 'python-mode-hook 'turn-on-font-lock)
-(add-hook 'python-mode-hook '(lambda () (setq show-trailing-whitespace t)))
+(require 'linum)
+
+(defun my-code-mode-hook ()
+  (setq show-trailing-whitespace t)
+  (linum-mode)
+  (highlight-80+-mode))
+
+(defun my-erlang-mode-hook ()
+  (my-code-mode-hook))
+
+(defun my-haskell-mode-hook ()
+  (my-code-mode-hook))
+
+(defun my-python-mode-hook ()
+  (my-code-mode-hook))
+
+(add-hook 'python-mode-hook 'my-python-mode-hook)
+(add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
+(add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
 ;; (add-hook 'c++-mode-hook 'turn-on-font-lock)
 ;; (add-hook 'c-mode-hook 'turn-on-font-lock)
 ;; (add-hook 'emacs-lisp-mode-hook 'turn-on-font-lock)
@@ -57,9 +78,39 @@
 ;; (add-hook 'php-mode-hook 'turn-on-font-lock)
 ;; (add-hook 'write-file-hook 'time-stamp)
 
-;; Window switching
-(global-set-key (kbd "C-x C-o") (lambda () (interactive) (other-window -1))) ;; back one
-(global-set-key (kbd "C-x O") (lambda () (interactive) (other-window 2)))
+;;; Setup Distel
+(when (file-accessible-directory-p "~/src/distel.git")
+  (add-to-list 'load-path "~/src/distel.git/elisp")
+  (require 'distel)
+  (distel-setup))
+
+;;; Setup Wrangler
+(when (file-accessible-directory-p "/usr/local/share/wrangler/elisp")
+  (add-to-list 'load-path "/usr/local/share/wrangler/elisp")
+  (require 'wrangler))
+
+;; rcirc
+;; (require 'rcirc)
+;; (add-hook 'rcirc-mode-hook (lambda ()
+;;                              (flyspell-mode 1)))
+;; (set-face-foreground 'rcirc-my-nick "red" nil)
+;; (setq rcirc-time-format "%Y-%m-%d %H:%M")
+;; (setq rcirc-default-nick "superjudge")
+;; (setq rcirc-default-user-name "superjudge")
+;; (setq rcirc-default-user-full-name "Johan Liseborn")
+;; (setq rcirc-startup-channels-alist
+;;       '(("\\.freenode\\.net" "#emacs" "#rcirc")))
+
+;;; Org mode
+(setq org-agenda-files (list "~/.org/work.org"
+                             "~/.org/home.org"))
 
 ;; Load some games
 (require 'sudoku)
+
+;;; Bookmarks
+(setq bookmark-default-file "~/.emacs.bookmarks"
+      bookmark-save-flag 1)
+
+;;; Sensible screen splitting
+(setq split-width-threshold nil)
