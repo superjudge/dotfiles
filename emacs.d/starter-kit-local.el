@@ -39,10 +39,18 @@
 ;; (add-hook 'after-init-hook 'server-start)
 
 ;;; Some global defaults
-(global-auto-revert-mode)
-(line-number-mode)
-(column-number-mode)
+(column-number-mode t)
+(line-number-mode t)
+(global-auto-revert-mode t)
+(tool-bar-mode nil)
+(mouse-avoidance-mode 'jump)
+
 (setq-default indent-tabs-mode nil)
+
+(setq make-backup-files nil)
+(setq ps-paper-type 'a4)
+(setq calendar-week-start-day 1)
+(setq european-calendar-style 't)
 
 ;; Setup pretty colors
 (zenburn)
