@@ -6,5 +6,6 @@ alias mvimdiff='mvim -d0'
 alias mview='mvim -R'
 
 # Make sure Python virtualenv is setup nicely
-source /opt/local/bin/virtualenvwrapper_bashrc-2.6
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
 #source /Library/Frameworks/Python.framework/Versions/2.6/bin/virtualenvwrapper_bashrc
