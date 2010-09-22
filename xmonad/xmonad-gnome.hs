@@ -107,7 +107,7 @@ myLogHook = return ()
 myStartupHook = return ()
 
 main = xmonad $ gnomeConfig {
-         terminal           = "xfce4-terminal",
+         terminal           = "gnome-terminal",
          focusFollowsMouse  = False,
          borderWidth        = 1,
          modMask            = mod4Mask,
