@@ -42,18 +42,25 @@
 (column-number-mode t)
 (line-number-mode t)
 (global-auto-revert-mode t)
-(tool-bar-mode nil)
-(mouse-avoidance-mode 'jump)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(mouse-avoidance-mode 'cat-and-mouse)
 
 (setq-default indent-tabs-mode nil)
 
 (setq make-backup-files nil)
 (setq ps-paper-type 'a4)
 (setq calendar-week-start-day 1)
-(setq european-calendar-style 't)
+(setq european-calendar-style t)
+(setq display-time-24hr-format t)
+(setq display-time-day-and-date 1)
+(display-time-mode)
 
-;; Setup pretty colors
+;;; Setup pretty colors
 (zenburn)
+
+;;; Global key mappings
+(global-set-key (kbd "M-p") 'magit-status)
 
 (require 'linum)
 
