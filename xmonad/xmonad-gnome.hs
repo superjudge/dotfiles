@@ -37,6 +37,7 @@ myKeys = [ ("M-p", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
 
          -- Lock Screen
          , ("M-S-l",    spawn "gnome-screensaver-command -l")
+         , ("M5-l",     spawn "gnome-screensaver-command -l")
          -- Logout
          , ("M1-M-S-l", spawn "gnome-session-save --gui --kill")
          -- Sleep
