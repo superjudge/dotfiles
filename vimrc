@@ -152,19 +152,19 @@ let g:clj_highlight_builtins = 1
 let g:clj_highlight_contrib = 1
 let g:clj_paren_rainbow = 1
 
+" Tasklist
+map T :TaskList<CR>
+map P :TlistToggle<CR>
+
 " Fuzzy
 map <leader>b :FufBuffer<CR>
 map <leader>f :FufFile<CR>
 map <leader>m :FufMruFile<CR>
-map <leader>t :FufTag<CR>
+noremap <leader>t :FufTag<CR>
 let g:fuf_modesDisable = [ 'mrucmd', ]
 
 " NERD Tree
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
-
-" Tasklist
-map T :TaskList<CR>
-map P :TlistToggle<CR>
 
 " Folding
 " nnoremap <space> za
