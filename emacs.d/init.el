@@ -67,7 +67,7 @@
 (add-hook 'after-init-hook 'superjudge-reloaded)
 (add-hook 'after-init-hook 'server-start)
 
-;;; Setup CEDET
+;;; Setup CEDET and ECB
 ;; See cedet/common/cedet.info for configuration details.
 (when (load-file "~/local/share/emacs/site-lisp/cedet-1.0pre6/common/cedet.el")
   ;; Enable EDE (Project Management) features
@@ -99,12 +99,12 @@
   (semantic-add-system-include "~/.virtualenvs/wooter/lib/python2.6/site-packages" 'python-mode)
 
   ;; Enable SRecode (Template management) minor-mode.
-  (global-srecode-minor-mode 1))
+  (global-srecode-minor-mode 1)
 
-;;; Setup ECB
-(add-to-list 'load-path "~/local/share/emacs/site-lisp/ecb-2.40")
-(require 'ecb nil t)
-;;;(require 'ecb-autoloads nil t)
+  ;; Setup ECB
+  (add-to-list 'load-path "~/local/share/emacs/site-lisp/ecb-2.40")
+  ;;(require 'ecb-autoloads nil t)
+  (require 'ecb nil t))
 
 ;;; Setup encoding for international
 (set-language-environment 'utf-8)
@@ -187,9 +187,6 @@
 (when (require 'speedbar nil t)
   (global-set-key "\M-s" 'speedbar-get-focus))
 
-;;; Indent using spaces only
-(setq-default indent-tabs-mode t)
-
 ;;; Visible bell only
 (setq visible-bell t)
 
@@ -231,8 +228,6 @@
 ;;; Setup Slime
 (add-to-list 'load-path "~/local/share/emacs/site-lisp/slime/")
 (add-to-list 'load-path "~/local/share/emacs/site-lisp/slime/contrib/")
-;(add-to-list 'load-path "~/work/lisp/slime/")
-;(add-to-list 'load-path "~/work/lisp/slime/contrib")
 (when (require 'slime nil t)
   ;;(slime-setup '(slime-repl)))
   (slime-setup '(slime-fancy slime-banner))
@@ -245,20 +240,19 @@
 
 ;;; Clojure mode
 (add-to-list 'load-path "~/local/share/emacs/site-lisp/clojure-mode/")
-;(add-to-list 'load-path "~/work/lisp/clojure-mode")
 (when (require 'clojure-mode nil t)
   (autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
   (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode)))
 
 ;;; Clojure Swank
 (add-to-list 'load-path "~/local/share/emacs/site-lisp/swank-clojure/")
-;(add-to-list 'load-path "~/work/lisp/swank-clojure")
 (setq swank-clojure-binary "~/bin/clj")
-(setq swank-clojure-jar-path "~/work/lisp/clojure-read-only/clojure.jar")
+(setq swank-clojure-jar-path "~/.clojurelib/clojure.jar")
 ;;alternatively, you can set up the clojure wrapper script and use that:
 (setq swank-clojure-extra-classpaths (list "~/work/lisp/programming-clojure"))
 (setq swank-clojure-extra-vm-args "-server -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8888")
 (require 'swank-clojure-autoload nil t)
+
 
 ;;; Set-up Erlang mode
 (cond
