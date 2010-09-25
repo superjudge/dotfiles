@@ -56,6 +56,13 @@
 (setq display-time-day-and-date 1)
 (display-time-mode)
 
+;;; Bookmarks
+(setq bookmark-default-file "~/.emacs.bookmarks"
+      bookmark-save-flag 1)
+
+;;; Sensible screen splitting
+(setq split-width-threshold nil)
+
 ;;; Setup pretty colors
 (zenburn)
 
@@ -123,9 +130,7 @@
 ;; Load some games
 (require 'sudoku)
 
-;;; Bookmarks
-(setq bookmark-default-file "~/.emacs.bookmarks"
-      bookmark-save-flag 1)
-
-;;; Sensible screen splitting
-(setq split-width-threshold nil)
+;;; Darwin
+(when (eq system-type 'darwin)
+  (setq ns-command-modifier 'meta)
+  (setq ns-alternate-modifier 'none))
