@@ -133,4 +133,5 @@
 ;;; Darwin
 (when (eq system-type 'darwin)
   (setq ns-command-modifier 'meta)
-  (setq ns-alternate-modifier 'none))
+  (setq ns-alternate-modifier 'none)
+  (menu-bar-mode 1))
