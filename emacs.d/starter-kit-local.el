@@ -48,6 +48,10 @@
 
 (setq-default indent-tabs-mode nil)
 
+(setq scroll-preserve-screen-position 1)
+(setq scroll-conservatively 1)
+(setq scroll-margin 5)
+
 (setq make-backup-files nil)
 (setq ps-paper-type 'a4)
 (setq calendar-week-start-day 1)
