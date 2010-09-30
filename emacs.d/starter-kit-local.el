@@ -74,14 +74,19 @@
 (global-set-key (kbd "M-p") 'magit-status)
 
 (require 'linum)
+(require 'flymake)
 
 (defun my-code-mode-hook ()
   (setq show-trailing-whitespace t)
   (linum-mode)
+  (flymake-mode)
   (highlight-80+-mode))
 
 (defun my-erlang-mode-hook ()
-  (my-code-mode-hook))
+  (my-code-mode-hook)
+  (when (locate-library "erlang-flymake")
+    (local-set-key (kbd "M-'")
+                   'erlang-flymake-next-error)))
 
 (defun my-haskell-mode-hook ()
   (my-code-mode-hook))
