@@ -84,6 +84,7 @@
 
 (defun my-erlang-mode-hook ()
   (my-code-mode-hook)
+  (setq inferior-erlang-machine-options '("-sname" "emacs"))
   (when (locate-library "erlang-flymake")
     (local-set-key (kbd "M-'")
                    'erlang-flymake-next-error)))
