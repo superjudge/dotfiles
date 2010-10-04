@@ -84,7 +84,6 @@
 
 (defun my-erlang-mode-hook ()
   (my-code-mode-hook)
-  (setq inferior-erlang-machine-options '("-sname" "emacs"))
   (when (locate-library "erlang-flymake")
     (local-set-key (kbd "M-'")
                    'erlang-flymake-next-error)))
@@ -109,6 +108,26 @@
 ;; (add-hook 'java-mode-hook 'turn-on-font-lock)
 ;; (add-hook 'php-mode-hook 'turn-on-font-lock)
 ;; (add-hook 'write-file-hook 'time-stamp)
+
+(setq inferior-erlang-machine-options '("-sname" "emacs@localhost"))
+
+(defun r13b ()
+  (setq erlang-root-dir (expand-file-name "~/local/otp/R13B04"))
+  (add-to-list 'exec-path (exapnd-file-name "~/local/otp/R13B04/bin"))
+  (setq inferior-erlang-machine (expand-file-name "~/local/otp/R13B04/bin/erl")))
+
+(defun r14b ()
+  (setq erlang-root-dir (expand-file-name "~/local/otp/R14B"))
+  (add-to-list 'exec-path (expand-file-name "~/local/otp/R14B/bin"))
+  (setq erlang-man-root-dir (expand-file-name "~/local/otp/R14B/man"))
+  (setq inferior-erlang-machine (expand-file-name "~/local/otp/R14B/bin/erl")))
+
+(defun std-erlang ()
+  (setq erlang-root-dir "/usr/")
+  (setq exec-path (cons "/usr/bin" exec-path))
+  (setq inferior-erlang-machine "/usr/bin/erl"))
+
+(r14b)
 
 ;;; Setup Distel
 (when (file-accessible-directory-p "~/src/distel.git")
