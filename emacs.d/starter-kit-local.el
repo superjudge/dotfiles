@@ -157,7 +157,7 @@
                              "~/.org/home.org"))
 
 ;; Load some games
-(require 'sudoku)
+;(require 'sudoku)
 
 ;;; Darwin
 (when (eq system-type 'darwin)
