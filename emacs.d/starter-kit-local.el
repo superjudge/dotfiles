@@ -38,6 +38,9 @@
 (add-hook 'after-init-hook 'superjudge-reloaded)
 ;; (add-hook 'after-init-hook 'server-start)
 
+;;; Setup pretty colors
+(zenburn)
+
 ;;; Some global defaults
 (column-number-mode t)
 (line-number-mode t)
@@ -64,11 +67,12 @@
 (setq bookmark-default-file "~/.emacs.bookmarks"
       bookmark-save-flag 1)
 
+;;; Org-mode
+(setq org-agenda-files (list "~/.org/work.org"
+                             "~/.org/home.org"))
+
 ;;; Sensible screen splitting
 (setq split-width-threshold nil)
-
-;;; Setup pretty colors
-(zenburn)
 
 ;;; Global key mappings
 (global-set-key (kbd "M-p") 'magit-status)
@@ -76,6 +80,7 @@
 
 (require 'linum)
 
+;;; Code mode hooks
 (defun my-code-mode-hook ()
   (setq show-trailing-whitespace t)
   (linum-mode 1)
@@ -96,16 +101,7 @@
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
 (add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
-;; (add-hook 'c++-mode-hook 'turn-on-font-lock)
-;; (add-hook 'c-mode-hook 'turn-on-font-lock)
-;; (add-hook 'emacs-lisp-mode-hook 'turn-on-font-lock)
 (add-hook 'emacs-lisp-mode-hook '(lambda () (setq show-trailing-whitespace t)))
-;; (add-hook 'shell-script-mode-hook 'turn-on-font-lock)
-;; (add-hook 'cperl-mode-hook 'turn-on-font-lock)
-;; (add-hook 'html-mode-hook 'turn-on-font-lock)
-;; (add-hook 'LaTeX-mode-hook 'turn-on-font-lock)
-;; (add-hook 'java-mode-hook 'turn-on-font-lock)
-;; (add-hook 'php-mode-hook 'turn-on-font-lock)
 ;; (add-hook 'write-file-hook 'time-stamp)
 
 (defun r13b ()
@@ -142,25 +138,6 @@
 (when (file-accessible-directory-p "/usr/local/share/wrangler/elisp")
   (add-to-list 'load-path "/usr/local/share/wrangler/elisp")
   (require 'wrangler))
-
-;; rcirc
-;; (require 'rcirc)
-;; (add-hook 'rcirc-mode-hook (lambda ()
-;;                              (flyspell-mode 1)))
-;; (set-face-foreground 'rcirc-my-nick "red" nil)
-;; (setq rcirc-time-format "%Y-%m-%d %H:%M")
-;; (setq rcirc-default-nick "superjudge")
-;; (setq rcirc-default-user-name "superjudge")
-;; (setq rcirc-default-user-full-name "Johan Liseborn")
-;; (setq rcirc-startup-channels-alist
-;;       '(("\\.freenode\\.net" "#emacs" "#rcirc")))
-
-;;; Org mode
-(setq org-agenda-files (list "~/.org/work.org"
-                             "~/.org/home.org"))
-
-;; Load some games
-;(require 'sudoku)
 
 ;;; Darwin
 (when (eq system-type 'darwin)
