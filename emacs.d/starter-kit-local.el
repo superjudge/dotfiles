@@ -72,15 +72,14 @@
 
 ;;; Global key mappings
 (global-set-key (kbd "M-p") 'magit-status)
+(global-set-key (kbd "C-<tab>") 'hippie-expand)
 
 (require 'linum)
-(require 'flymake)
 
 (defun my-code-mode-hook ()
   (setq show-trailing-whitespace t)
-  (linum-mode)
-  (flymake-mode)
-  (highlight-80+-mode))
+  (linum-mode 1)
+  (highlight-80+-mode 1))
 
 (defun my-erlang-mode-hook ()
   (my-code-mode-hook)
@@ -109,8 +108,6 @@
 ;; (add-hook 'php-mode-hook 'turn-on-font-lock)
 ;; (add-hook 'write-file-hook 'time-stamp)
 
-(setq inferior-erlang-machine-options '("-sname" "emacs@localhost"))
-
 (defun r13b ()
   (setq erlang-root-dir (expand-file-name "~/local/otp/R13B04"))
   (add-to-list 'exec-path (exapnd-file-name "~/local/otp/R13B04/bin"))
@@ -129,9 +126,15 @@
 
 (r14b)
 
+(setq inferior-erlang-machine-options '("-name" "emacs@localhost"))
+(add-to-list 'load-path "~/local/otp/R14B/lib/erlang/lib/tools-2.6.6.1/emacs")
+
+(require 'erlang-start)
+(require 'erlang-flymake)
+
 ;;; Setup Distel
-(when (file-accessible-directory-p "~/src/distel.git")
-  (add-to-list 'load-path "~/src/distel.git/elisp")
+(when (file-accessible-directory-p "~/src/distel")
+  (add-to-list 'load-path "~/src/distel/elisp")
   (require 'distel)
   (distel-setup))
 
