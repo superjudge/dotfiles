@@ -89,8 +89,8 @@
 (defun my-erlang-mode-hook ()
   (my-code-mode-hook)
   (when (locate-library "erlang-flymake")
-    (local-set-key (kbd "M-'")
-                   'erlang-flymake-next-error)))
+    (local-set-key (kbd "M-'") 'erlang-flymake-next-error)
+    (local-set-key (kbd "M-/") 'erl-complete)))
 
 (defun my-haskell-mode-hook ()
   (my-code-mode-hook))
