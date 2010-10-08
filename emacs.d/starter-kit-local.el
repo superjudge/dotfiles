@@ -123,7 +123,9 @@
 
 (r14b)
 
-(setq inferior-erlang-machine-options '("-name" "emacs@localhost"))
+(setq inferior-erlang-machine-options '("-sname" "emacs"))
+(setq erl-nodename-cache (make-symbol (concat "emacs@" (car (split-string (shell-command-to-string "hostname"))))))
+
 (add-to-list 'load-path "~/local/otp/R14B/lib/erlang/lib/tools-2.6.6.1/emacs")
 
 (require 'erlang-start)
