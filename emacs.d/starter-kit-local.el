@@ -82,6 +82,7 @@
 
 ;;; Code mode hooks
 (defun my-code-mode-hook ()
+  (run-coding-hook)
   (setq show-trailing-whitespace t)
   (linum-mode 1)
   (highlight-80+-mode 1))
