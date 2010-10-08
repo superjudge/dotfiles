@@ -146,4 +146,5 @@
 (when (eq system-type 'darwin)
   (setq ns-command-modifier 'meta)
   (setq ns-alternate-modifier 'none)
+  (setq default-cursor-type 'box)
   (menu-bar-mode 1))
