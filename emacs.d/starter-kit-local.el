@@ -105,9 +105,14 @@
 (add-hook 'emacs-lisp-mode-hook '(lambda () (setq show-trailing-whitespace t)))
 ;; (add-hook 'write-file-hook 'time-stamp)
 
+(add-to-list 'load-path "~/local/otp/R14B/lib/erlang/lib/tools-2.6.6.1/emacs")
+
+(require 'erlang-start)
+(require 'erlang-flymake)
+
 (defun r13b ()
   (setq erlang-root-dir (expand-file-name "~/local/otp/R13B04"))
-  (add-to-list 'exec-path (exapnd-file-name "~/local/otp/R13B04/bin"))
+  (add-to-list 'exec-path (expand-file-name "~/local/otp/R13B04/bin"))
   (setq inferior-erlang-machine (expand-file-name "~/local/otp/R13B04/bin/erl")))
 
 (defun r14b ()
@@ -123,13 +128,9 @@
 
 (r14b)
 
-(setq inferior-erlang-machine-options '("-sname" "emacs"))
-(setq erl-nodename-cache (make-symbol (concat "emacs@" (car (split-string (shell-command-to-string "hostname"))))))
-
-(add-to-list 'load-path "~/local/otp/R14B/lib/erlang/lib/tools-2.6.6.1/emacs")
-
-(require 'erlang-start)
-(require 'erlang-flymake)
+(setq inferior-erlang-machine-options '("-sname" "emacs@localhost"))
+(defvar inferior-erlang-prompt-timeout t)
+(setq erl-nodename-cache 'emacs@localhost)
 
 ;;; Setup Distel
 (when (file-accessible-directory-p "~/src/distel")
