@@ -117,6 +117,30 @@
 (require 'erlang-start)
 (require 'erlang-flymake)
 
+;;; TODO: We should really look at what our project looks like,
+;;;       and adapth the code and include paths accordingly...
+;;;       For now we just assume that we have a set of application
+;;;       directories...
+(defun add-code-postfix (path)
+  (concat path "/ebin"))
+
+(defun add-include-postfix (path)
+  (concat path "/include"))
+
+(defun my-erlang-flymake-get-code-path-dirs ()
+  (mapcar 'add-code-postfix
+          (directory-files (concat  (erlang-flymake-get-app-dir) "../") t "^[^\.]")))
+
+(defun my-erlang-flymake-get-include-dirs ()
+  (mapcar 'add-include-postfix
+          (directory-files (concat (erlang-flymake-get-app-dir) "../") t "^[^\.]")))
+
+(setq erlang-flymake-get-code-path-dirs-function
+  'my-erlang-flymake-get-code-path-dirs)
+
+(setq erlang-flymake-get-include-dirs-function
+  'my-erlang-flymake-get-include-dirs)
+
 (defun r13b ()
   (setq erlang-root-dir (expand-file-name "~/local/otp/R13B04"))
   (add-to-list 'exec-path (expand-file-name "~/local/otp/R13B04/bin"))
