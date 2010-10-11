@@ -1,6 +1,6 @@
 " -*- coding: utf-8 -*-
 "
-" Copyright (c) 2009, Johan Liseborn <johan.liseborn@gmail.com>
+" Copyright (c) 2009, 2010 Johan Liseborn <johan.liseborn@gmail.com>
 "
 " Permission to use, copy, modify, and/or distribute this software for any
 " purpose with or without fee is hereby granted, provided that the above
@@ -160,7 +160,7 @@ map P :TlistToggle<CR>
 map <leader>b :FufBuffer<CR>
 map <leader>f :FufFile<CR>
 map <leader>m :FufMruFile<CR>
-noremap <leader>t :FufTag<CR>
+" map <leader>t :FufTag<CR>
 let g:fuf_modesDisable = [ 'mrucmd', ]
 
 " NERD Tree
