@@ -78,6 +78,9 @@
 (global-set-key (kbd "M-p") 'magit-status)
 (global-set-key (kbd "C-<tab>") 'hippie-expand)
 
+(add-to-list 'load-path "~/local/otp/R14B/lib/erlang/lib/tools-2.6.6.1/emacs")
+(require 'erlang-start)
+(require 'erlang-flymake)
 (require 'linum)
 
 ;;; Code mode hooks
@@ -90,32 +93,22 @@
 (defun turn-on-trailing-whitespace ()
   (setq show-trailing-whitespace t))
 
-(defun my-code-mode-hook ()
-  (run-coding-hook)
-  (setq show-trailing-whitespace t)
-  (linum-mode 1)
-  (highlight-80+-mode 1))
-
 (defun my-erlang-mode-hook ()
   (when (locate-library "erlang-flymake")
     (local-set-key (kbd "M-'") 'erlang-flymake-next-error)
     (local-set-key (kbd "M-/") 'erl-complete)))
 
-(add-hook 'coding-hook 'turn-on-linum)
-(add-hook 'coding-hook 'turn-on-trailing-whitespace)
-(add-hook 'coding-hook 'turn-on-highlight-80+)
+;;; Appand these (as font-lock sometimes breaks on large
+;;; files, and then these will never be invoked)
+(add-hook 'coding-hook 'turn-on-linum t)
+(add-hook 'coding-hook 'turn-on-trailing-whitespace t)
+(add-hook 'coding-hook 'turn-on-highlight-80+ t)
 
-(add-hook 'python-mode-hook 'coding-hook)
-(add-hook 'haskell-mode-hook 'coding-hook)
-(add-hook 'erlang-mode-hook 'coding-hook)
+(add-hook 'python-mode-hook 'run-coding-hook)
+(add-hook 'haskell-mode-hook 'run-coding-hook)
+(add-hook 'erlang-mode-hook 'run-coding-hook)
 (add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
-;(add-hook 'emacs-lisp-mode-hook '(lambda () (setq show-trailing-whitespace t)))
 ;; (add-hook 'write-file-hook 'time-stamp)
-
-(add-to-list 'load-path "~/local/otp/R14B/lib/erlang/lib/tools-2.6.6.1/emacs")
-
-(require 'erlang-start)
-(require 'erlang-flymake)
 
 ;;; TODO: We should really look at what our project looks like,
 ;;;       and adapth the code and include paths accordingly...
