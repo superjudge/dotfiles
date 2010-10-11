@@ -133,7 +133,7 @@
   (setq exec-path (cons "/usr/bin" exec-path))
   (setq inferior-erlang-machine "/usr/bin/erl"))
 
-(r14b)
+(r13b)
 
 (setq inferior-erlang-machine-options '("-sname" "emacs@localhost"))
 (defvar inferior-erlang-prompt-timeout t)
