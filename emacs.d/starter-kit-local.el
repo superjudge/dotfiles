@@ -38,6 +38,9 @@
 (add-hook 'after-init-hook 'superjudge-reloaded)
 ;; (add-hook 'after-init-hook 'server-start)
 
+;;; Setup pretty colors
+(zenburn)
+
 ;;; Some global defaults
 (column-number-mode t)
 (line-number-mode t)
@@ -64,29 +67,31 @@
 (setq bookmark-default-file "~/.emacs.bookmarks"
       bookmark-save-flag 1)
 
+;;; Org-mode
+(setq org-agenda-files (list "~/.org/work.org"
+                             "~/.org/home.org"))
+
 ;;; Sensible screen splitting
 (setq split-width-threshold nil)
 
-;;; Setup pretty colors
-(zenburn)
-
 ;;; Global key mappings
 (global-set-key (kbd "M-p") 'magit-status)
+(global-set-key (kbd "C-<tab>") 'hippie-expand)
 
 (require 'linum)
-(require 'flymake)
 
+;;; Code mode hooks
 (defun my-code-mode-hook ()
+  (run-coding-hook)
   (setq show-trailing-whitespace t)
-  (linum-mode)
-  (flymake-mode)
-  (highlight-80+-mode))
+  (linum-mode 1)
+  (highlight-80+-mode 1))
 
 (defun my-erlang-mode-hook ()
   (my-code-mode-hook)
   (when (locate-library "erlang-flymake")
-    (local-set-key (kbd "M-'")
-                   'erlang-flymake-next-error)))
+    (local-set-key (kbd "M-'") 'erlang-flymake-next-error)
+    (local-set-key (kbd "M-/") 'erl-complete)))
 
 (defun my-haskell-mode-hook ()
   (my-code-mode-hook))
@@ -97,21 +102,39 @@
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
 (add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
-;; (add-hook 'c++-mode-hook 'turn-on-font-lock)
-;; (add-hook 'c-mode-hook 'turn-on-font-lock)
-;; (add-hook 'emacs-lisp-mode-hook 'turn-on-font-lock)
 (add-hook 'emacs-lisp-mode-hook '(lambda () (setq show-trailing-whitespace t)))
-;; (add-hook 'shell-script-mode-hook 'turn-on-font-lock)
-;; (add-hook 'cperl-mode-hook 'turn-on-font-lock)
-;; (add-hook 'html-mode-hook 'turn-on-font-lock)
-;; (add-hook 'LaTeX-mode-hook 'turn-on-font-lock)
-;; (add-hook 'java-mode-hook 'turn-on-font-lock)
-;; (add-hook 'php-mode-hook 'turn-on-font-lock)
 ;; (add-hook 'write-file-hook 'time-stamp)
 
+(add-to-list 'load-path "~/local/otp/R14B/lib/erlang/lib/tools-2.6.6.1/emacs")
+
+(require 'erlang-start)
+(require 'erlang-flymake)
+
+(defun r13b ()
+  (setq erlang-root-dir (expand-file-name "~/local/otp/R13B04"))
+  (add-to-list 'exec-path (expand-file-name "~/local/otp/R13B04/bin"))
+  (setq inferior-erlang-machine (expand-file-name "~/local/otp/R13B04/bin/erl")))
+
+(defun r14b ()
+  (setq erlang-root-dir (expand-file-name "~/local/otp/R14B"))
+  (add-to-list 'exec-path (expand-file-name "~/local/otp/R14B/bin"))
+  (setq erlang-man-root-dir (expand-file-name "~/local/otp/R14B/man"))
+  (setq inferior-erlang-machine (expand-file-name "~/local/otp/R14B/bin/erl")))
+
+(defun std-erlang ()
+  (setq erlang-root-dir "/usr/")
+  (setq exec-path (cons "/usr/bin" exec-path))
+  (setq inferior-erlang-machine "/usr/bin/erl"))
+
+(r14b)
+
+(setq inferior-erlang-machine-options '("-sname" "emacs@localhost"))
+(defvar inferior-erlang-prompt-timeout t)
+(setq erl-nodename-cache 'emacs@localhost)
+
 ;;; Setup Distel
-(when (file-accessible-directory-p "~/src/distel.git")
-  (add-to-list 'load-path "~/src/distel.git/elisp")
+(when (file-accessible-directory-p "~/src/distel")
+  (add-to-list 'load-path "~/src/distel/elisp")
   (require 'distel)
   (distel-setup))
 
@@ -120,27 +143,9 @@
   (add-to-list 'load-path "/usr/local/share/wrangler/elisp")
   (require 'wrangler))
 
-;; rcirc
-;; (require 'rcirc)
-;; (add-hook 'rcirc-mode-hook (lambda ()
-;;                              (flyspell-mode 1)))
-;; (set-face-foreground 'rcirc-my-nick "red" nil)
-;; (setq rcirc-time-format "%Y-%m-%d %H:%M")
-;; (setq rcirc-default-nick "superjudge")
-;; (setq rcirc-default-user-name "superjudge")
-;; (setq rcirc-default-user-full-name "Johan Liseborn")
-;; (setq rcirc-startup-channels-alist
-;;       '(("\\.freenode\\.net" "#emacs" "#rcirc")))
-
-;;; Org mode
-(setq org-agenda-files (list "~/.org/work.org"
-                             "~/.org/home.org"))
-
-;; Load some games
-(require 'sudoku)
-
 ;;; Darwin
 (when (eq system-type 'darwin)
   (setq ns-command-modifier 'meta)
   (setq ns-alternate-modifier 'none)
+  (setq default-cursor-type 'box)
   (menu-bar-mode 1))
