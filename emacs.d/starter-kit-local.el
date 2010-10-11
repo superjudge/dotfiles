@@ -81,6 +81,15 @@
 (require 'linum)
 
 ;;; Code mode hooks
+(defun turn-on-linum ()
+  (linum-mode t))
+
+(defun turn-on-highlight-80+ ()
+  (highlight-80+-mode t))
+
+(defun turn-on-trailing-whitespace ()
+  (setq show-trailing-whitespace t))
+
 (defun my-code-mode-hook ()
   (run-coding-hook)
   (setq show-trailing-whitespace t)
@@ -88,21 +97,19 @@
   (highlight-80+-mode 1))
 
 (defun my-erlang-mode-hook ()
-  (my-code-mode-hook)
   (when (locate-library "erlang-flymake")
     (local-set-key (kbd "M-'") 'erlang-flymake-next-error)
     (local-set-key (kbd "M-/") 'erl-complete)))
 
-(defun my-haskell-mode-hook ()
-  (my-code-mode-hook))
+(add-hook 'coding-hook 'turn-on-linum)
+(add-hook 'coding-hook 'turn-on-trailing-whitespace)
+(add-hook 'coding-hook 'turn-on-highlight-80+)
 
-(defun my-python-mode-hook ()
-  (my-code-mode-hook))
-
-(add-hook 'python-mode-hook 'my-python-mode-hook)
-(add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
+(add-hook 'python-mode-hook 'coding-hook)
+(add-hook 'haskell-mode-hook 'coding-hook)
+(add-hook 'erlang-mode-hook 'coding-hook)
 (add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
-(add-hook 'emacs-lisp-mode-hook '(lambda () (setq show-trailing-whitespace t)))
+;(add-hook 'emacs-lisp-mode-hook '(lambda () (setq show-trailing-whitespace t)))
 ;; (add-hook 'write-file-hook 'time-stamp)
 
 (add-to-list 'load-path "~/local/otp/R14B/lib/erlang/lib/tools-2.6.6.1/emacs")
