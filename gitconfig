@@ -8,11 +8,11 @@
 [alias]
     co = checkout
     st = status
+    wc = whatchanged
+    br = branch
 
     lg = log --graph
     lp = log -p
-
-    wc = whatchanged
 
 [color]
     ui = auto
@@ -21,4 +21,4 @@
     default = current
 
 [merge]
-	tool = meld
+    tool = meld
