@@ -36,6 +36,10 @@ set textwidth=79
 " set shiftwidth=4
 " set autoindent
 
+let g:erlangHightBif=1
+let g:erlangManPath='~/local/otp/R14B/lib/erlang/man'
+let g:erlangCompletionPath='~/.vim/bundles/vimerl/autoload/erlang_completion.erl'
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
