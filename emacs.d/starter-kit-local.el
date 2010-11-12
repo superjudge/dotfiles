@@ -169,6 +169,11 @@
 
 ;;; Darwin
 (when (eq system-type 'darwin)
+  ;; Make the mac-alt key work as normal. Mac-option becomes the meta key
+  ;;(setq mac-option-key-is-meta nil)
+  ;;(setq mac-command-key-is-meta t)
+  ;;(setq mac-command-modifier 'meta)
+  ;;(setq mac-option-modifier nil)
   (setq ns-command-modifier 'meta)
   (setq ns-alternate-modifier 'none)
   (setq default-cursor-type 'box)
