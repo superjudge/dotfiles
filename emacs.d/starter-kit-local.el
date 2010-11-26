@@ -39,8 +39,7 @@
 ;; (add-hook 'after-init-hook 'server-start)
 
 ;;; Setup pretty colors
-;;(zenburn)
-(color-theme-tangotango)
+(zenburn)
 
 ;;; Some global defaults
 (column-number-mode t)
@@ -151,7 +150,7 @@
   (setq exec-path (cons "/usr/bin" exec-path))
   (setq inferior-erlang-machine "/usr/bin/erl"))
 
-(r13b)
+(r14b)
 
 (setq inferior-erlang-machine-options '("-sname" "emacs@localhost"))
 (defvar inferior-erlang-prompt-timeout t)
@@ -170,6 +169,8 @@
 
 ;;; Darwin
 (when (eq system-type 'darwin)
+  (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
+  (push "/usr/local/bin" exec-path)
   ;; Make the mac-alt key work as normal. Mac-option becomes the meta key
   ;;(setq mac-option-key-is-meta nil)
   ;;(setq mac-command-key-is-meta t)
