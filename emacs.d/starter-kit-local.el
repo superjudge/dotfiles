@@ -82,6 +82,19 @@
 (require 'erlang-start)
 (require 'erlang-flymake)
 (require 'linum)
+;(require 'slime-autoloads)
+
+;;; Haskell
+(load "~/local/elisp/haskell-mode-2.8.0/haskell-site-file")
+
+;;; Common Lisp
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+
+(setq common-lisp-hyperspec-root
+      "file:///~/local/HyperSpec-7.0")
+(setq slime-lisp-implementations'
+      ((sbcl ("sbcl" "--sbcl-nolineedit"))))
+
 
 ;;; Code mode hooks
 (defun turn-on-linum ()
