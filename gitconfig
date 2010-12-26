@@ -1,6 +1,6 @@
 [user]
-    name = Johan Liseborn
-    email = johan.liseborn@gmail.com
+	name = Johan Liseborn
+	email = johan.liseborn@gmail.com
 
 [core]
     excludesfile = ~/.gitignore
