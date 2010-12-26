@@ -111,14 +111,22 @@
     (local-set-key (kbd "M-'") 'erlang-flymake-next-error)
     (local-set-key (kbd "M-/") 'erl-complete)))
 
+(require 'whitespace)
+(setq whitespace-line-column 78)
+
 ;;; Appand these (as font-lock sometimes breaks on large
 ;;; files, and then these will never be invoked)
 (add-hook 'coding-hook 'turn-on-linum t)
-(add-hook 'coding-hook 'turn-on-trailing-whitespace t)
-(add-hook 'coding-hook 'turn-on-highlight-80+ t)
+;(add-hook 'coding-hook 'turn-on-trailing-whitespace t)
+(add-hook 'coding-hook 'whitespace-mode t)
+;(add-hook 'coding-hook 'turn-on-highlight-80+ t)
 
 (add-hook 'python-mode-hook 'run-coding-hook)
 (add-hook 'haskell-mode-hook 'run-coding-hook)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+;; (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;; (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 (add-hook 'erlang-mode-hook 'run-coding-hook)
 (add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
 ;; (add-hook 'write-file-hook 'time-stamp)
