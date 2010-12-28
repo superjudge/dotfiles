@@ -141,13 +141,25 @@
 (defun add-include-postfix (path)
   (concat path "/include"))
 
+;; (defun my-erlang-flymake-get-code-path-dirs ()
+;;   (mapcar 'add-code-postfix
+;;           (directory-files (concat  (erlang-flymake-get-app-dir) "../") t "^[^\.]")))
+
+;; (defun my-erlang-flymake-get-include-dirs ()
+;;   (mapcar 'add-include-postfix
+;;           (directory-files (concat (erlang-flymake-get-app-dir) "../") t "^[^\.]")))
+
+;; Setup Erlang flymkae for Nitrogen project structures
 (defun my-erlang-flymake-get-code-path-dirs ()
-  (mapcar 'add-code-postfix
-          (directory-files (concat  (erlang-flymake-get-app-dir) "../") t "^[^\.]")))
+  (list
+   (concat (erlang-flymake-get-app-dir) "../ebin")))
 
 (defun my-erlang-flymake-get-include-dirs ()
-  (mapcar 'add-include-postfix
-          (directory-files (concat (erlang-flymake-get-app-dir) "../") t "^[^\.]")))
+  (append
+   (mapcar 'add-include-postfix
+           (directory-files (concat (erlang-flymake-get-app-dir) "../../lib/") t "^[^\.]"))
+   (list
+    (concat (erlang-flymake-get-app-dir) "../include"))))
 
 (setq erlang-flymake-get-code-path-dirs-function
   'my-erlang-flymake-get-code-path-dirs)
