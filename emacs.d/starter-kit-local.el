@@ -83,6 +83,12 @@
 (require 'erlang-flymake)
 (require 'linum)
 
+;; Add SBCL to Slime
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+(require 'slime)
+(add-to-list 'slime-lisp-implementations '(sbcl ("sbcl")))
+;(slime-setup)
+
 ;;; Code mode hooks
 (defun turn-on-linum ()
   (linum-mode t))
