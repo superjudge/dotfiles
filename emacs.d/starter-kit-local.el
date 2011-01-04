@@ -134,11 +134,11 @@
   (mapcar 'add-include-postfix
           (directory-files (concat (erlang-flymake-get-app-dir) "../") t "^[^\.]")))
 
-(setq erlang-flymake-get-code-path-dirs-function
-  'my-erlang-flymake-get-code-path-dirs)
+;; (setq erlang-flymake-get-code-path-dirs-function
+;;   'my-erlang-flymake-get-code-path-dirs)
 
-(setq erlang-flymake-get-include-dirs-function
-  'my-erlang-flymake-get-include-dirs)
+;; (setq erlang-flymake-get-include-dirs-function
+;;   'my-erlang-flymake-get-include-dirs)
 
 (defun r13b ()
   (setq erlang-root-dir (expand-file-name "~/local/otp/R13B04"))
