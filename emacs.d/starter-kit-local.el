@@ -82,6 +82,19 @@
 (require 'erlang-start)
 (require 'erlang-flymake)
 (require 'linum)
+;(require 'slime-autoloads)
+
+;;; Haskell
+(load "~/local/elisp/haskell-mode-2.8.0/haskell-site-file")
+
+;;; Common Lisp
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+
+(setq common-lisp-hyperspec-root
+      "file:///~/local/HyperSpec-7.0")
+(setq slime-lisp-implementations'
+      ((sbcl ("sbcl" "--sbcl-nolineedit"))))
+
 
 ;; Add SBCL to Slime
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
@@ -104,14 +117,22 @@
     (local-set-key (kbd "M-'") 'erlang-flymake-next-error)
     (local-set-key (kbd "M-/") 'erl-complete)))
 
+(require 'whitespace)
+(setq whitespace-line-column 78)
+
 ;;; Appand these (as font-lock sometimes breaks on large
 ;;; files, and then these will never be invoked)
 (add-hook 'coding-hook 'turn-on-linum t)
-(add-hook 'coding-hook 'turn-on-trailing-whitespace t)
-(add-hook 'coding-hook 'turn-on-highlight-80+ t)
+;(add-hook 'coding-hook 'turn-on-trailing-whitespace t)
+(add-hook 'coding-hook 'whitespace-mode t)
+;(add-hook 'coding-hook 'turn-on-highlight-80+ t)
 
 (add-hook 'python-mode-hook 'run-coding-hook)
 (add-hook 'haskell-mode-hook 'run-coding-hook)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+;; (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;; (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 (add-hook 'erlang-mode-hook 'run-coding-hook)
 (add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
 ;; (add-hook 'write-file-hook 'time-stamp)
@@ -126,13 +147,25 @@
 (defun add-include-postfix (path)
   (concat path "/include"))
 
+;; (defun my-erlang-flymake-get-code-path-dirs ()
+;;   (mapcar 'add-code-postfix
+;;           (directory-files (concat  (erlang-flymake-get-app-dir) "../") t "^[^\.]")))
+
+;; (defun my-erlang-flymake-get-include-dirs ()
+;;   (mapcar 'add-include-postfix
+;;           (directory-files (concat (erlang-flymake-get-app-dir) "../") t "^[^\.]")))
+
+;; Setup Erlang flymkae for Nitrogen project structures
 (defun my-erlang-flymake-get-code-path-dirs ()
-  (mapcar 'add-code-postfix
-          (directory-files (concat  (erlang-flymake-get-app-dir) "../") t "^[^\.]")))
+  (list
+   (concat (erlang-flymake-get-app-dir) "../ebin")))
 
 (defun my-erlang-flymake-get-include-dirs ()
-  (mapcar 'add-include-postfix
-          (directory-files (concat (erlang-flymake-get-app-dir) "../") t "^[^\.]")))
+  (append
+   (mapcar 'add-include-postfix
+           (directory-files (concat (erlang-flymake-get-app-dir) "../../lib/") t "^[^\.]"))
+   (list
+    (concat (erlang-flymake-get-app-dir) "../include"))))
 
 ;; (setq erlang-flymake-get-code-path-dirs-function
 ;;   'my-erlang-flymake-get-code-path-dirs)

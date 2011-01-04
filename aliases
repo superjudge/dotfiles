@@ -1,6 +1,7 @@
 # -*- mode: shell-script-mode; coding: utf-8 -*-
 
-alias ls='ls -F --color'
+#alias ls='ls -F --color'
+alias ls='ls -F'
 alias ll='ls -l'
 
 alias vi='vim'
@@ -8,4 +9,3 @@ alias vi='vim'
 # alias e='emacs -nw'
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
-

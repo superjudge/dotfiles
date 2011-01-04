@@ -147,9 +147,8 @@ let g:SuperTabRetainCompletionDuration='completion'
 " let g:SuperTabContextDefaultCompletionType='context'
 
 " Clojure
-let g:clj_want_gorilla = 1
+let vimclojure#WantNailgun = 1
 let g:clj_highlight_builtins = 1
-let g:clj_highlight_contrib = 1
 let g:clj_paren_rainbow = 1
 
 " Tasklist
