@@ -121,8 +121,10 @@ set statusline+=[LEN=%L]
 let python_highlight_all = 1
 
 " Tasklist
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 map T :TaskList<CR>
+
+" Tag List
+let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 map P :TlistToggle<CR>
 
 " SuperTab
