@@ -131,8 +131,10 @@ map <silent><C-Left> <C-T>
 map <silent><C-Right> <C-]>
 
 " Tasklist
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 map T :TaskList<CR>
+
+" Tag List
+let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 map P :TlistToggle<CR>
 
 " SuperTab

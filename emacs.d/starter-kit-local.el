@@ -96,6 +96,12 @@
       ((sbcl ("sbcl" "--sbcl-nolineedit"))))
 
 
+;; Add SBCL to Slime
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+(require 'slime)
+(add-to-list 'slime-lisp-implementations '(sbcl ("sbcl")))
+;(slime-setup)
+
 ;;; Code mode hooks
 (defun turn-on-linum ()
   (linum-mode t))
@@ -161,11 +167,11 @@
    (list
     (concat (erlang-flymake-get-app-dir) "../include"))))
 
-(setq erlang-flymake-get-code-path-dirs-function
-  'my-erlang-flymake-get-code-path-dirs)
+;; (setq erlang-flymake-get-code-path-dirs-function
+;;   'my-erlang-flymake-get-code-path-dirs)
 
-(setq erlang-flymake-get-include-dirs-function
-  'my-erlang-flymake-get-include-dirs)
+;; (setq erlang-flymake-get-include-dirs-function
+;;   'my-erlang-flymake-get-include-dirs)
 
 (defun r13b ()
   (setq erlang-root-dir (expand-file-name "~/local/otp/R13B04"))
