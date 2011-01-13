@@ -37,6 +37,9 @@ set cursorline
 " set shiftwidth=4
 " set autoindent
 
+set colorcolumn=80
+"hi colorcolumn guibg=#2d2d2d ctermbg=246
+
 let g:erlangHightBif=1
 let g:erlangManPath='~/local/otp/R14B/lib/erlang/man'
 let g:erlangCompletionPath='~/.vim/bundles/vimerl/autoload/erlang_completion.erl'
