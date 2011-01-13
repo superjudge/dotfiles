@@ -123,6 +123,13 @@ set statusline+=[LEN=%L]
 " Python
 let python_highlight_all = 1
 
+" Tags
+set tags+=$HOME/.vim/tags/python2.6.ctags
+set tags+=$HOME/.vim/tags/planet2.6.ctags
+
+map <silent><C-Left> <C-T>
+map <silent><C-Right> <C-]>
+
 " Tasklist
 let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 map T :TaskList<CR>
