@@ -1,24 +1,27 @@
 [user]
-	name = Johan Liseborn
-	email = johan.liseborn@gmail.com
+  name = Johan Liseborn
+  email = johan.liseborn@gmail.com
 
 [core]
-    excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
 
 [alias]
-    co = checkout
-    st = status
-    wc = whatchanged
-    br = branch
+  co = checkout
+  st = status
+  wc = whatchanged
+  br = branch
 
-    lg = log --graph
-    lp = log -p
+  lg = log --graph
+  lp = log -p
 
 [color]
-    ui = auto
+  ui = auto
 
 [push]
-    default = current
+  default = current
 
 [merge]
-    tool = meld
+  tool = meld
+
+[diff]
+  tool = opendiff
