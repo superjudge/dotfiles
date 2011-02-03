@@ -40,6 +40,8 @@ set cursorline
 set colorcolumn=80
 "hi colorcolumn guibg=#2d2d2d ctermbg=246
 
+nmap <leader>v :tabedit $MYVIMRC<CR>
+
 let g:erlangHightBif=1
 let g:erlangManPath='~/local/otp/R14B/lib/erlang/man'
 let g:erlangCompletionPath='~/.vim/bundles/vimerl/autoload/erlang_completion.erl'
@@ -74,6 +76,8 @@ if has("autocmd")
     \ endif
 
   augroup END
+
+  autocmd bufwritepost .vimrc source $MYVIMRC
 
   " Remvove trailing whitespace
   " autocmd BufWritePre *.py :%s/\s\+$//e
