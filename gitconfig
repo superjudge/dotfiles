@@ -4,6 +4,9 @@
 
 [core]
   excludesfile = ~/.gitignore
+  eol = lf
+  #autocrlf = input
+  #safecrlf = true
 
 [alias]
   co = checkout
