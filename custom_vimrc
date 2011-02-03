@@ -143,6 +143,9 @@ let g:SuperTabRetainCompletionDuration='completion'
 " let g:SuperTabDefaultCompletionType='context' 
 " let g:SuperTabContextDefaultCompletionType='context'
 
+" Planet
+au BufRead,BufNewFile *.surf set filetype=smarty
+
 " Abbrevs
 iab <expr> atodo  strftime("TODO: (mjl, %a %d %Y %H:%M %Z)")
 iab <expr> afixme strftime("FIXME: (mjl, %a %d %Y %H:%M %Z)")
