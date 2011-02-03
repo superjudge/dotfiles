@@ -143,6 +143,11 @@ let g:SuperTabRetainCompletionDuration='completion'
 " let g:SuperTabDefaultCompletionType='context' 
 " let g:SuperTabContextDefaultCompletionType='context'
 
+" Abbrevs
+iab <expr> atodo  strftime("TODO: (mjl, %a %d %Y %H:%M %Z)")
+iab <expr> afixme strftime("FIXME: (mjl, %a %d %Y %H:%M %Z)")
+iab <expr> axxx   strftime("XXX: (mjl, %a %d %Y %H:%M %Z)")
+
 " Fuzzy
 let g:fuf_modesDisable = []
 let g:fuf_mrufile_maxItem = 400
