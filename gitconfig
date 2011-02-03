@@ -17,6 +17,8 @@
   lg = log --graph
   lp = log -p
 
+  sha = log --pretty=sha -1
+
 [color]
   ui = auto
 
@@ -28,3 +30,6 @@
 
 [diff]
   tool = opendiff
+
+[pretty]
+  sha = format:%h
