@@ -37,7 +37,7 @@ set cursorline
 " set shiftwidth=4
 " set autoindent
 
-set colorcolumn=80
+"set colorcolumn=80
 "hi colorcolumn guibg=#2d2d2d ctermbg=246
 
 nmap <leader>v :tabedit $MYVIMRC<CR>
