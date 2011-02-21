@@ -7,3 +7,5 @@ alias ll='ls -l'
 # alias e='emacs -nw'
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
+
+alias v='mvim --remote-silent'
