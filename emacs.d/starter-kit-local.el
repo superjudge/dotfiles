@@ -39,7 +39,8 @@
 ;; (add-hook 'after-init-hook 'server-start)
 
 ;;; Setup pretty colors
-(zenburn)
+;(zenburn)
+(color-theme-twilight)
 
 ;;; Some global defaults
 (column-number-mode t)
