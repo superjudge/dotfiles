@@ -30,6 +30,11 @@ set smartcase           " smart case searching
 set sessionoptions+=resize,unix,slash
 set cursorline
 
+set scrolloff=8
+set lazyredraw
+set showmode
+set wildmenu
+
 " set expandtab
 " set textwidth=79
 " set tabstop=8
