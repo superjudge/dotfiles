@@ -14,19 +14,13 @@
 " ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 " OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-" colorscheme  xoria256
-" let g:zenburn_high_Contrast = 1
-" colorscheme darkZ
-" colorscheme tango
-" colorscheme zmrok
 colorscheme wombat256
 
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
-set smartcase           " smart case searching
-" set number              " show line numbers
+set history=50 " keep 50 lines of command line history
+set ruler      " show the cursor position all the time
+set showcmd    " display incomplete commands
+set incsearch  " do incremental searching
+set smartcase  " smart case searching
 set sessionoptions+=resize,unix,slash
 set cursorline
 
@@ -34,16 +28,6 @@ set scrolloff=8
 set lazyredraw
 set showmode
 set wildmenu
-
-" set expandtab
-" set textwidth=79
-" set tabstop=8
-" set softtabstop=4
-" set shiftwidth=4
-" set autoindent
-
-"set colorcolumn=80
-"hi colorcolumn guibg=#2d2d2d ctermbg=246
 
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
