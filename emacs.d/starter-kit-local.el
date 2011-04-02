@@ -38,6 +38,8 @@
 (add-hook 'after-init-hook 'superjudge-reloaded)
 ;; (add-hook 'after-init-hook 'server-start)
 
+(set-default-font "-apple-Inconsolata-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+
 ;;; Setup pretty colors
 ;(zenburn)
 (color-theme-twilight)
