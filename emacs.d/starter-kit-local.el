@@ -81,7 +81,7 @@
 (global-set-key (kbd "M-p") 'magit-status)
 (global-set-key (kbd "C-<tab>") 'hippie-expand)
 
-(add-to-list 'load-path "~/local/otp/R14B/lib/erlang/lib/tools-2.6.6.1/emacs")
+(add-to-list 'load-path "~/local/otp/R14B/lib/erlang/lib/tools-2.6.6.3/emacs")
 (require 'erlang-start)
 (require 'erlang-flymake)
 (require 'linum)
