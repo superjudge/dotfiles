@@ -93,17 +93,12 @@
 ;;; Common Lisp
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 
-(setq common-lisp-hyperspec-root
-      "file:///~/local/HyperSpec-7.0")
-(setq slime-lisp-implementations'
-      ((sbcl ("sbcl" "--sbcl-nolineedit"))))
-
-
-;; Add SBCL to Slime
-(load (expand-file-name "~/quicklisp/slime-helper.el"))
 (require 'slime)
-(add-to-list 'slime-lisp-implementations '(sbcl ("sbcl")))
-;(slime-setup)
+
+(setq common-lisp-hyperspec-root
+      "file:///~/local/share/HyperSpec-7.0")
+(add-to-list 'slime-lisp-implementations
+             '(sbcl ("sbcl" "--sbcl-nolineedit")))
 
 ;;; Code mode hooks
 (defun turn-on-linum ()
