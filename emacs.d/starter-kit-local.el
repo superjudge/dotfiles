@@ -128,7 +128,7 @@
 (add-hook 'coding-hook 'turn-on-linum t)
 ;(add-hook 'coding-hook 'turn-on-trailing-whitespace t)
 (add-hook 'coding-hook 'whitespace-mode t)
-;(add-hook 'coding-hook 'turn-on-highlight-80+ t)
+(add-hook 'coding-hook 'turn-on-highlight-80+ t)
 
 (add-hook 'python-mode-hook 'run-coding-hook)
 (add-hook 'haskell-mode-hook 'run-coding-hook)
