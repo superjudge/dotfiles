@@ -90,6 +90,10 @@
 ;;; Haskell
 (load "~/local/elisp/haskell-mode-2.8.0/haskell-site-file")
 
+;;; Gambit Scheme
+(add-to-list 'load-path "~/local/share/gambit/site-lisp")
+(require 'gambit)
+
 ;;; Common Lisp
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 
