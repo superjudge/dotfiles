@@ -102,9 +102,9 @@
 (setq common-lisp-hyperspec-root
       "file:///~/local/share/HyperSpec-7.0")
 (add-to-list 'slime-lisp-implementations
-             '(sbcl ("sbcl" "--sbcl-nolineedit")))
-(add-to-list 'slime-lisp-implementations
              '(clisp ("clisp")))
+(add-to-list 'slime-lisp-implementations
+             '(sbcl ("sbcl" "--sbcl-nolineedit")))
 
 ;;; Code mode hooks
 (defun turn-on-linum ()
