@@ -88,7 +88,7 @@
 ;(require 'slime-autoloads)
 
 ;;; Haskell
-(load "~/local/elisp/haskell-mode-2.8.0/haskell-site-file")
+(load "~/local/elisp/haskellmode-emacs/haskell-site-file")
 
 ;;; Gambit Scheme
 (add-to-list 'load-path "~/local/share/gambit/site-lisp")
