@@ -50,6 +50,8 @@ if has("autocmd")
   autocmd FileType make setlocal noexpandtab sw=8 sts=8
   autocmd FileType text setlocal textwidth=78
 
+  au BufRead,BufNewFile *.rkt set filetype=scheme
+
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
   au!
