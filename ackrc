@@ -1,4 +1,8 @@
 --sort-files
 --color
+--context=1
+--follow
+--group
+--all
 --pager=less -r
 # --smart-case
