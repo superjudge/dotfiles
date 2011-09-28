@@ -39,6 +39,7 @@
 ;; (add-hook 'after-init-hook 'server-start)
 
 (set-default-font "-apple-Inconsolata-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+(set-language-environment "utf-8")
 
 ;;; Setup pretty colors
 ;(zenburn)
@@ -81,11 +82,15 @@
 (global-set-key (kbd "M-p") 'magit-status)
 (global-set-key (kbd "C-<tab>") 'hippie-expand)
 
-(add-to-list 'load-path "~/local/otp/R14B/lib/erlang/lib/tools-2.6.6.3/emacs")
+(add-to-list 'load-path "~/local/otp/R14B/lib/erlang/lib/tools-2.6.6.4/emacs")
 (require 'erlang-start)
 (require 'erlang-flymake)
 (require 'linum)
 ;(require 'slime-autoloads)
+
+;;; Scala
+(add-to-list 'load-path "~/local/elisp/scala-mode")
+(require 'scala-mode-auto)
 
 ;;; Haskell
 (load "~/local/elisp/haskellmode-emacs/haskell-site-file")
@@ -99,12 +104,17 @@
 
 (require 'slime)
 
-(setq common-lisp-hyperspec-root
-      "file:///~/local/share/HyperSpec-7.0")
+;; (setq common-lisp-hyperspec-root
+;;       "file:///~/local/share/HyperSpec")
+(add-to-list 'slime-lisp-implementations
+             '(ccl64 ("~/bin/ccl64" "-K utf-8")))
 (add-to-list 'slime-lisp-implementations
              '(clisp ("clisp")))
 (add-to-list 'slime-lisp-implementations
              '(sbcl ("sbcl" "--sbcl-nolineedit")))
+
+(setq slime-net-coding-system 'utf-8-unix)
+(slime-setup '(slime-fancy))
 
 ;;; Code mode hooks
 (defun turn-on-linum ()
@@ -159,15 +169,17 @@
 ;;   (mapcar 'add-include-postfix
 ;;           (directory-files (concat (erlang-flymake-get-app-dir) "../") t "^[^\.]")))
 
-;; Setup Erlang flymkae for Nitrogen project structures
+;; Setup Erlang flymake for Nitrogen project structures
 (defun my-erlang-flymake-get-code-path-dirs ()
+  (interactive)
   (list
    (concat (erlang-flymake-get-app-dir) "../ebin")))
 
 (defun my-erlang-flymake-get-include-dirs ()
+  (interactive)
   (append
    (mapcar 'add-include-postfix
-           (directory-files (concat (erlang-flymake-get-app-dir) "../../lib/") t "^[^\.]"))
+           (directory-files (concat (erlang-flymake-get-app-dir) "../lib/") t "^[^\.]"))
    (list
     (concat (erlang-flymake-get-app-dir) "../include"))))
 
