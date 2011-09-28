@@ -210,6 +210,20 @@
   (add-to-list 'load-path "/usr/local/share/wrangler/elisp")
   (require 'wrangler))
 
+;; (require 'worklog)
+;; (setq worklog-automatic-login t)
+;; (add-hook 'emacs-startup-hook
+;;           (function (lambda ()
+;;                       (worklog-do-task "Hacking emacs" t))))
+
+;; (add-hook 'kill-emacs-hook
+;;           (function (lambda ()
+;;                       (worklog-do-task "logout" t)
+;;                       (worklog-finish))))
+
+(require 'save-visited-files)
+(turn-on-save-visited-files-mode)
+
 ;;; Darwin
 (when (eq system-type 'darwin)
   (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
