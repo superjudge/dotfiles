@@ -14,7 +14,7 @@
 " ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 " OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-Bundle "git://github.com/scrooloose/nerdtree.git"
+Bundle "scrooloose/nerdtree.git"
 Bundle 'superSnipMate'
 Bundle 'taglist.vim'
 Bundle 'pyflakes.vim'
@@ -24,13 +24,12 @@ Bundle 'pydoc.vim'
 Bundle 'Gundo'
 Bundle 'django.vim'
 Bundle 'pep8'
+Bundle 'jade.vim'
 Bundle "git://github.com/bingaman/vim-sparkup.git"
 Bundle "git://github.com/superjudge/vimerl.git"
 Bundle "git://github.com/altercation/vim-colors-solarized.git"
 Bundle "git://github.com/vim-scripts/IndentAnything"
 Bundle "git://github.com/Cowboy-coder/vim-surf.git"
-Bundle "git://github.com/kchmck/vim-coffee-script.git"
-Bundle 'jade.vim'
 
 "colorscheme wombat256
 colorscheme xoria256
