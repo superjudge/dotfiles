@@ -14,7 +14,9 @@
 " ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 " OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-colorscheme wombat256
+
+"colorscheme wombat256
+colorscheme xoria256
 
 set history=50 " keep 50 lines of command line history
 set ruler      " show the cursor position all the time
