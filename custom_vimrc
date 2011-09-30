@@ -89,6 +89,8 @@ if has("autocmd")
 
   autocmd bufwritepost .vimrc source $MYVIMRC
 
+  au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
+
   " Remvove trailing whitespace
   " autocmd BufWritePre *.py :%s/\s\+$//e
 
