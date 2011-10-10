@@ -49,6 +49,12 @@ set wildmenu
 
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
+let clj_highlight_builtins   = 1
+"let clj_highlight_contrib    = 1
+let vimclojure#ParenRainbow  = 1
+let vimclojure#WantNailgun   = 1
+let vimclojure#NailgunClient ="/usr/local/bin/ng"
+
 let g:erlangHightBif=1
 let g:erlangManPath='~/local/otp/R14B/lib/erlang/man'
 let g:erlangCompletionPath='~/.vim/bundles/vimerl/autoload/erlang_completion.erl'
