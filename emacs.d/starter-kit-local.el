@@ -43,7 +43,7 @@
 
 ;;; Setup pretty colors
 ;(zenburn)
-(color-theme-twilight)
+;(color-theme-twilight)
 
 ;;; Some global defaults
 (column-number-mode t)
@@ -82,15 +82,15 @@
 (global-set-key (kbd "M-p") 'magit-status)
 (global-set-key (kbd "C-<tab>") 'hippie-expand)
 
-(add-to-list 'load-path "~/local/otp/R14B/lib/erlang/lib/tools-2.6.6.4/emacs")
+(add-to-list 'load-path "~/local/otp/R14B/lib/erlang/lib/tools-2.6.6.3/emacs")
 (require 'erlang-start)
 (require 'erlang-flymake)
 (require 'linum)
 ;(require 'slime-autoloads)
 
 ;;; Scala
-(add-to-list 'load-path "~/local/elisp/scala-mode")
-(require 'scala-mode-auto)
+;;(add-to-list 'load-path "~/local/elisp/scala-mode")
+;;(require 'scala-mode-auto)
 
 ;;; Haskell
 (load "~/local/elisp/haskellmode-emacs/haskell-site-file")
@@ -233,18 +233,19 @@
 ;;                       (worklog-do-task "logout" t)
 ;;                       (worklog-finish))))
 
-(require 'save-visited-files)
-(turn-on-save-visited-files-mode)
+;;(require 'save-visited-files)
+;;(turn-on-save-visited-files-mode)
 
 ;;; Darwin
 (when (eq system-type 'darwin)
   (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
   (push "/usr/local/bin" exec-path)
   ;; Make the mac-alt key work as normal. Mac-option becomes the meta key
-  ;;(setq mac-option-key-is-meta nil)
-  ;;(setq mac-command-key-is-meta t)
-  ;;(setq mac-command-modifier 'meta)
-  ;;(setq mac-option-modifier nil)
+  (setq mac-option-key-is-meta nil)
+  (setq mac-command-key-is-meta t)
+  (setq mac-command-modifier 'meta)
+  (setq mac-option-modifier nil)
+  ;;
   (setq ns-command-modifier 'meta)
   (setq ns-alternate-modifier 'none)
   (setq default-cursor-type 'box)
