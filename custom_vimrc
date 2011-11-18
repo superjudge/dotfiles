@@ -49,6 +49,11 @@ set wildmenu
 
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
+set foldmethod=syntax
+set foldlevelstart=1
+
+let javaScript_fold=1
+
 let clj_highlight_builtins   = 1
 "let clj_highlight_contrib    = 1
 let vimclojure#ParenRainbow  = 1
