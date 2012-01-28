@@ -109,7 +109,7 @@
 ;(require 'slime-autoloads)
 
 ;;; Scala
-(add-to-list 'load-path "~/local/elisp/scala-mode")
+;(add-to-list 'load-path "~/local/elisp/scala-mode")
 ;(require 'scala-mode-auto)
 
 ;;; Haskell
