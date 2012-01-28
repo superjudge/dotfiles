@@ -161,6 +161,10 @@
 (add-hook 'coding-hook 'whitespace-mode t)
 (add-hook 'coding-hook 'turn-on-highlight-80+ t)
 
+(add-hook 'clojure-mode-hook 'turn-on-linum t)
+(add-hook 'clojure-mode-hook 'whitespace-mode t)
+(add-hook 'clojure-mode-hook 'turn-on-highlight-80+ t)
+
 (add-hook 'python-mode-hook 'run-coding-hook)
 (add-hook 'haskell-mode-hook 'run-coding-hook)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
