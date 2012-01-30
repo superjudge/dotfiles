@@ -42,15 +42,34 @@
 (set-language-environment "utf-8")
 
 ;;; Setup pretty colors
+(setq dotfiles-dir (file-name-directory
+                    (or (buffer-file-name) load-file-name)))
+(setq user-specific-dir (concat dotfiles-dir user-login-name))
+(add-to-list 'load-path (concat user-specific-dir "/color-theme"))
+(add-to-list 'load-path (concat user-specific-dir "/emacs-color-theme-solarized"))
+(require 'color-theme)
+(require 'color-theme-solarized)
+(color-theme-solarized-dark)
 ;(require 'color-theme)
 ;(zenburn)
 ;(color-theme-twilight)
+
+;; Color Theme
+;; (setq dotfiles-dir (file-name-directory
+;;                     (or (buffer-file-name) load-file-name)))
+;; (setq user-specific-dir (concat dotfiles-dir user-login-name))
+;; (add-to-list 'load-path (concat user-specific-dir "/color-theme"))
+;; (require 'color-theme)
+;; (eval-after-load "color-theme"
+;;   '(progn
+;;      (color-theme-initialize)
+;;      (color-theme-taylor)))
 
 ;;; Some global defaults
 (column-number-mode t)
 (line-number-mode t)
 (global-auto-revert-mode t)
-(tool-bar-mode -1)
+;(tool-bar-mode -1)
 (menu-bar-mode -1)
 (mouse-avoidance-mode 'cat-and-mouse)
 
@@ -83,22 +102,22 @@
 (global-set-key (kbd "M-p") 'magit-status)
 (global-set-key (kbd "C-<tab>") 'hippie-expand)
 
-(add-to-list 'load-path "~/local/otp/R14B/lib/erlang/lib/tools-2.6.6.3/emacs")
-(require 'erlang-start)
-(require 'erlang-flymake)
-(require 'linum)
+(add-to-list 'load-path "~/local/otp/R14B/lib/erlang/lib/tools-2.6.6.4/emacs")
+;(require 'erlang-start)
+;(require 'erlang-flymake)
+;(require 'linum)
 ;(require 'slime-autoloads)
 
 ;;; Scala
-;;(add-to-list 'load-path "~/local/elisp/scala-mode")
-;;(require 'scala-mode-auto)
+;(add-to-list 'load-path "~/local/elisp/scala-mode")
+;(require 'scala-mode-auto)
 
 ;;; Haskell
-(load "~/local/elisp/haskellmode-emacs/haskell-site-file")
+;(load "~/local/elisp/haskellmode-emacs/haskell-site-file")
 
 ;;; Gambit Scheme
-(add-to-list 'load-path "~/local/share/gambit/site-lisp")
-(require 'gambit)
+;(add-to-list 'load-path "~/local/share/gambit/site-lisp")
+;(require 'gambit)
 
 ;;; Common Lisp
 ;(load (expand-file-name "~/quicklisp/slime-helper.el"))
@@ -141,6 +160,10 @@
 ;(add-hook 'coding-hook 'turn-on-trailing-whitespace t)
 (add-hook 'coding-hook 'whitespace-mode t)
 (add-hook 'coding-hook 'turn-on-highlight-80+ t)
+
+(add-hook 'clojure-mode-hook 'turn-on-linum t)
+(add-hook 'clojure-mode-hook 'whitespace-mode t)
+(add-hook 'clojure-mode-hook 'turn-on-highlight-80+ t)
 
 (add-hook 'python-mode-hook 'run-coding-hook)
 (add-hook 'haskell-mode-hook 'run-coding-hook)

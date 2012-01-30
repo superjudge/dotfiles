@@ -49,11 +49,19 @@ set wildmenu
 
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
-let clj_highlight_builtins   = 1
-"let clj_highlight_contrib    = 1
-let vimclojure#ParenRainbow  = 1
+set foldmethod=syntax
+set foldlevelstart=1
+
+let javaScript_fold=1
+
+"let clj_highlight_builtins   = 1
+"let vimclojure#ParenRainbow  = 1
 let vimclojure#WantNailgun   = 1
 let vimclojure#NailgunClient ="/usr/local/bin/ng"
+let vimclojure#SplitPos = "right"
+let g:vimclojure#HighlightBuiltins = 1
+let g:vimclojure#ParenRainbow = 1
+let g:vimclojure#DynamicHighlighting = 1
 
 let g:erlangHightBif=1
 let g:erlangManPath='~/local/otp/R14B/lib/erlang/man'
@@ -74,6 +82,7 @@ if has("autocmd")
   autocmd FileType make setlocal noexpandtab sw=8 sts=8
   autocmd FileType text setlocal textwidth=78
 
+  au BufRead,BufNewFile *.scala set filetype=scala
   au BufRead,BufNewFile *.rkt set filetype=racket
 
   " Put these in an autocmd group, so that we can delete them easily.

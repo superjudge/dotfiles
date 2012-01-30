@@ -59,6 +59,7 @@ term screen
 attrcolor b ".I"
 # tell screen how to set colors. AB = background, AF=foreground
 termcapinfo xterm|xterm-color|xterm-256color|rxvt|rxvt-unicode|screen|screen-xterm 'Co#256:ti@:te@:XT:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+termcapinfo xterm* ti@:te@
 
 # erase background with current bg color
 # defbce "on"
