@@ -1,5 +1,5 @@
 [user]
-	name = Johan Liseborn
+  name = Johan Liseborn
   email = johan.liseborn@gmail.com
 
 [core]
@@ -18,6 +18,8 @@
   lp = log -p
 
   sha = log --pretty=sha -1
+
+  vanity = shortlog -n -s
 
 [color]
   ui = auto
