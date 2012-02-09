@@ -19,7 +19,7 @@
 
   sha = log --pretty=sha -1
 
-  vanity = shortlog -s -n
+  vanity = shortlog -n -s
 
 [color]
   ui = auto

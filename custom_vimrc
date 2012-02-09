@@ -15,21 +15,21 @@
 " OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 Bundle "scrooloose/nerdtree.git"
-Bundle 'superSnipMate'
+"Bundle 'superSnipMate'
 Bundle 'taglist.vim'
-Bundle 'pyflakes.vim'
+"Bundle 'pyflakes.vim'
 Bundle 'TaskList.vim'
-Bundle 'scala.vim'
-Bundle 'pydoc.vim'
+"Bundle 'scala.vim'
+"Bundle 'pydoc.vim'
 Bundle 'Gundo'
-Bundle 'django.vim'
-Bundle 'pep8'
-Bundle 'jade.vim'
-Bundle "git://github.com/bingaman/vim-sparkup.git"
-Bundle "git://github.com/superjudge/vimerl.git"
-Bundle "git://github.com/altercation/vim-colors-solarized.git"
+"Bundle 'django.vim'
+"Bundle 'pep8'
+"Bundle 'jade.vim'
+"Bundle "git://github.com/bingaman/vim-sparkup.git"
+"Bundle "git://github.com/superjudge/vimerl.git"
+"Bundle "git://github.com/altercation/vim-colors-solarized.git"
 Bundle "git://github.com/vim-scripts/IndentAnything"
-Bundle "git://github.com/Cowboy-coder/vim-surf.git"
+"Bundle "git://github.com/Cowboy-coder/vim-surf.git"
 
 "colorscheme wombat256
 colorscheme xoria256
@@ -52,10 +52,10 @@ nmap <leader>v :tabedit $MYVIMRC<CR>
 set foldmethod=syntax
 set foldlevelstart=1
 
+nnoremap <F5> :GundoToggle<CR>
+
 let javaScript_fold=1
 
-"let clj_highlight_builtins   = 1
-"let vimclojure#ParenRainbow  = 1
 let vimclojure#WantNailgun   = 1
 let vimclojure#NailgunClient ="/usr/local/bin/ng"
 let vimclojure#SplitPos = "right"
@@ -63,9 +63,9 @@ let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
 let g:vimclojure#DynamicHighlighting = 1
 
-let g:erlangHightBif=1
-let g:erlangManPath='~/local/otp/R14B/lib/erlang/man'
-let g:erlangCompletionPath='~/.vim/bundles/vimerl/autoload/erlang_completion.erl'
+"let g:erlangHightBif=1
+"let g:erlangManPath='~/local/otp/R14B/lib/erlang/man'
+"let g:erlangCompletionPath='~/.vim/bundles/vimerl/autoload/erlang_completion.erl'
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
