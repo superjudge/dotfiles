@@ -121,21 +121,23 @@
 ;(require 'gambit)
 
 ;;; Common Lisp
-;(load (expand-file-name "~/quicklisp/slime-helper.el"))
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
 
-;(require 'slime)
+(require 'slime)
 
-;; (setq common-lisp-hyperspec-root
-;;       "file:///~/local/share/HyperSpec")
+(setq common-lisp-hyperspec-root
+      "file:///~/local/share/HyperSpec")
 ;(add-to-list 'slime-lisp-implementations
 ;             '(ccl64 ("~/bin/ccl64" "-K utf-8")))
-;(add-to-list 'slime-lisp-implementations
-;             '(clisp ("clisp")))
-;(add-to-list 'slime-lisp-implementations
-;             '(sbcl ("sbcl" "--sbcl-nolineedit")))
+(add-to-list 'slime-lisp-implementations
+             '(clisp ("clisp")))
+(add-to-list 'slime-lisp-implementations
+             '(sbcl ("sbcl" "--sbcl-nolineedit")))
+(add-to-list 'slime-lisp-implementations
+             '(cmucl ("lisp")))
 
-;(setq slime-net-coding-system 'utf-8-unix)
-;(slime-setup '(slime-fancy))
+(setq slime-net-coding-system 'utf-8-unix)
+(slime-setup '(slime-fancy))
 
 ;;; Code mode hooks
 (defun turn-on-linum ()
