@@ -42,14 +42,15 @@
 (set-language-environment "utf-8")
 
 ;;; Setup pretty colors
-(setq dotfiles-dir (file-name-directory
-                    (or (buffer-file-name) load-file-name)))
-(setq user-specific-dir (concat dotfiles-dir user-login-name))
-(add-to-list 'load-path (concat user-specific-dir "/color-theme"))
-(add-to-list 'load-path (concat user-specific-dir "/emacs-color-theme-solarized"))
-(require 'color-theme)
-(require 'color-theme-solarized)
-(color-theme-solarized-dark)
+(load-theme 'wombat)
+;; (setq dotfiles-dir (file-name-directory
+;;                     (or (buffer-file-name) load-file-name)))
+;; (setq user-specific-dir (concat dotfiles-dir user-login-name))
+;; (add-to-list 'load-path (concat user-specific-dir "/color-theme"))
+;; (add-to-list 'load-path (concat user-specific-dir "/emacs-color-theme-solarized"))
+;; (require 'color-theme)
+;; (require 'color-theme-solarized)
+;; (color-theme-solarized-dark)
 ;(require 'color-theme)
 ;(zenburn)
 ;(color-theme-twilight)
