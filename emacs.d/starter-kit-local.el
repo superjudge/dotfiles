@@ -178,6 +178,8 @@
 (add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
 ;; (add-hook 'write-file-hook 'time-stamp)
 
+(add-hook 'lisp-interaction-mode (lambda () (paredit-mode +1)))
+
 ;;; TODO: We should really look at what our project looks like,
 ;;;       and adapth the code and include paths accordingly...
 ;;;       For now we just assume that we have a set of application
