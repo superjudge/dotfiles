@@ -2,6 +2,22 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+autoload -Uz compinit bashcompinit
+compinit
+bashcompinit
+
+setopt completeinword
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
+
+HISTFILE=~/.zhistory
+HISTSIZE=SAVEHIST=10000
+setopt sharehistory
+setopt extendedhistory
+setopt interactivecomments # pound sign in interactive prompt
+
+setopt auto_cd
+
 alias ls='ls -FG --color=auto'
 alias ll='ls -l'
 
