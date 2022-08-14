@@ -38,6 +38,9 @@
 [push]
 	default = current
 
+[pager]
+  difftool = true
+
 [diff]
   tool = difftastic
 
