@@ -1,0 +1,14 @@
+a.out
+*~
+*.swp
+*.a
+*.o
+*.so
+*.class
+*.beam
+*.py[co]
+*.egg-info
+.DS_Store
+.svn
+.idea
+.vscode

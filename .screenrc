@@ -1,0 +1,96 @@
+# -*- shell-script -*-
+
+startup_message off
+
+# Remap the escape key
+escape ^Oo
+
+altscreen on
+autodetach on
+defbce on
+defflow off
+deflogin on
+defmonitor off
+defscrollback 2048
+defutf8 on
+defwrap on
+defmousetrack on
+hardcopy_append on
+hardcopydir ~/tmp/
+msgminwait 0
+msgwait 1
+nethack on
+nonblock on
+vbell off
+verbose on
+
+#caption always "%{= gK} %n %{= wk} %h %=%t %c"
+#caption always "%{= 11}%{+b w}Screen: %n | %h %=%t %c"
+#caption always "%{= wk} %?%-Lw%?%{= kd} %n*%f %t %{= wk}%?%+Lw%? %{= wk}%=%{= Wk} %C%a %m-%d-%Y %{= wk}"
+#caption always "%{+b kG} %=%{-s} %{.K}%-w%{.B}%n %{.G}%t%{.K}%+w%{.G} %{+s} %="
+#caption always “%{kB}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{kB}%?%+Lw%?”
+#caption always "%{= wb}%{k} %n | %h %=%t %c"
+
+#hardstatus alwayslastline
+#hardstatus string "%{= kw}%-Lw%{= Wb}%50>%n%f* %t%{= kw}%+Lw%< %{= wK}%-=%D %d %M %Y %c%{-}"
+#hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+#hardstatus alwayslastline
+#hardstatus string '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %M %d %c ]%{W}'
+hardstatus alwayslastline '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %M %d %c ]%{W}'
+#hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+#hardstatus string "%{=b kW}[ %{= Y}$USER @ %H %{b W}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{b W}][%{= Y} %l %{b W}][%{= Y} %d/%m %{Y}%c %{b W}]"
+
+shelltitle ''
+
+activity "%c activity -> %n%f %t"
+bell "%c activity -> %n%f %t"
+#activity "You hear noises in window %n"
+#bell "You hear noises in window %n"
+
+# windowlist string "Num Name%=Flags"
+# windowlist title "%3n %t%=%f"
+
+setenv DISPLAY 'localhost:10'
+setenv LC_CTYPE en_US.UTF-8
+
+term xterm-256color
+
+# terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+#attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+#termcapinfo xterm|xterm-color|xterm-256color|rxvt|rxvt-unicode|screen|screen-xterm 'Co#256:ti@:te@:XT:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+termcapinfo xterm* ti@:te@
+
+bindkey -k k9  command
+
+# bindkey "K" resize +2
+# bindkey "J" resize -2
+
+bindkey "^[1" select 0
+bindkey "^[2" select 1
+bindkey "^[3" select 2
+bindkey "^[4" select 3
+bindkey "^[5" select 4
+bindkey "^[6" select 5
+bindkey "^[7" select 6
+bindkey "^[8" select 7
+bindkey "^[9" select 8
+#bindkey "^[," prev
+#bindkey "^[." next
+
+# bindkey "^[<" eval number !echo $WINDOW-1|bc
+# bindkey "^[>" eval number !echo $WINDOW+1|bc
+
+# Enter scrollback mode on S-PgUp
+# bindkey "^[[5;2~" eval "copy" "stuff ^u"
+# bindkey -m "^[[5;2~" stuff ^u
+# bindkey -m "^[[6;2~" stuff ^d
+
+# fix ssh-agent
+unsetenv SSH_AUTH_SOCK
+setenv SSH_AUTH_SOCK $HOME/.screen/ssh-auth-sock.$HOSTNAME
+
+# fix kerberos credentials cache
+#unsetenv KRB5CCNAME
+#setenv KRB5CCNAME "FILE:$HOME/.screen/krb5cc.$HOSTNAME"

@@ -1,0 +1,67 @@
+[core]
+	excludesfile = ~/.gitignore
+
+[user]
+  useConfigOnly = true
+  name = Johan Liseborn
+  email = johan@castlerock.se
+
+[column]
+  ui = auto
+
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	wc = whatchanged
+	br = branch
+	df = diff
+  dft = difftool
+	dfs = difftool --staged
+
+	lg = log --graph --decorate --oneline --all
+	lp = log -p
+
+	sha = log --pretty=sha -1
+
+	vanity = shortlog -n -s
+
+[color]
+	ui = auto
+  branch = auto
+  diff = auto
+  status = auto
+
+[blame]
+  date = relative
+
+[push]
+	default = current
+
+[diff]
+  tool = difftastic
+
+[difftool]
+  prompt = false
+
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
+
+[pretty]
+	sha = format:%h
+
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+
+[filter "indent"]
+	clean = indent
+	smudge = cat
+
+[push]
+	default = current
+
+[init]
+	defaultBranch = main
+
