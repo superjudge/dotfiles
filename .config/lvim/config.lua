@@ -11,22 +11,29 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
+lvim.colorscheme = 'forestbones'
 -- lvim.colorscheme = "onedarker"
 -- lvim.colorscheme = "gruvbox-material"
 -- BOO Color Schemes
 -- lvim.colorscheme = "sunset_cloud"
-lvim.colorscheme = "radioactive_waste"
+-- lvim.colorscheme = "radioactive_waste"
 -- lvim.colorscheme = "forest_stream"
 -- lvim.colorscheme = "crimson_moonlight"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
+vim.opt.termguicolors = true
+vim.opt.background = 'light'
+vim.opt.relativenumber = true
+
+require("nvim-lastplace").setup()
+
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
--- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
--- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
@@ -170,6 +177,9 @@ formatters.setup {
 lvim.plugins = {
   -- { "sainnhe/gruvbox-material" },
   { "superjudge/boo-colorscheme-nvim" },
+  { "rktjmp/lush.nvim" },
+  { "mcchrish/zenbones.nvim" },
+  { "ethanholz/nvim-lastplace" },
   --     {"folke/tokyonight.nvim"},
   --     {
   --       "folke/trouble.nvim",
@@ -183,6 +193,10 @@ lvim.plugins = {
 --   -- enable wrap mode for json files only
 --   command = "setlocal wrap",
 -- })
+vim.api.nvim_create_autocmd("colorscheme", {
+  pattern = { "*" },
+  command = "highlight Normal ctermbg=NONE guibg=NONE",
+})
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = "zsh",
 --   callback = function()
@@ -190,20 +204,3 @@ lvim.plugins = {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
-
-lvim.autocmds = {
-  {
-    "colorscheme",
-    {
-      pattern = { "*" },
-      command = "highlight Normal ctermbg=NONE guibg=NONE",
-    },
-  },
-}
-
-vim.cmd([[
-  autocmd BufReadPost *
-    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-    \ |   exe "normal! g`\""
-    \ | endif
-]])
