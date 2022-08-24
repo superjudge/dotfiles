@@ -15,8 +15,7 @@
 	st = status
 	wc = whatchanged
 	br = branch
-	df = diff
-  dft = difftool
+	df = difftool
 	dfs = difftool --staged
 
 	lg = log --graph --decorate --oneline --all
