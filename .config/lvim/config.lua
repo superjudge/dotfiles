@@ -11,7 +11,8 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = 'forestbones'
+-- lvim.colorscheme = 'forestbones'
+lvim.colorscheme = 'zenwritten'
 -- lvim.colorscheme = "onedarker"
 -- lvim.colorscheme = "gruvbox-material"
 -- BOO Color Schemes
@@ -23,7 +24,8 @@ lvim.colorscheme = 'forestbones'
 -- lvim.use_icons = false
 
 vim.opt.termguicolors = true
-vim.opt.background = 'light'
+-- vim.opt.background = 'light'
+vim.opt.background = 'dark'
 vim.opt.relativenumber = true
 
 require("nvim-lastplace").setup()
