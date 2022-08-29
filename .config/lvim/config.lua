@@ -24,8 +24,8 @@ lvim.colorscheme = 'zenwritten'
 -- lvim.use_icons = false
 
 vim.opt.termguicolors = true
--- vim.opt.background = 'light'
-vim.opt.background = 'dark'
+vim.opt.background = 'light'
+-- vim.opt.background = 'dark'
 vim.opt.relativenumber = true
 
 require("nvim-lastplace").setup()
