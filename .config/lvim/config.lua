@@ -189,7 +189,6 @@ linters.setup {
 -- Additional Plugins
 lvim.plugins = {
   -- { "sainnhe/gruvbox-material" },
-  { "superjudge/boo-colorscheme-nvim" },
   { "rktjmp/lush.nvim" },
   { "mcchrish/zenbones.nvim" },
   { "ethanholz/nvim-lastplace" },
