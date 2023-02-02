@@ -30,6 +30,7 @@ eval "$(starship init zsh)"
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
 [ -d "$HOME/.emacs.d/bin" ] && export PATH=$PATH:"$HOME/.emacs.d/bin"
+[ -d "$HOME/.rd/bin" ] && export PATH="$HOME/.rd/bin":$PATH
 [ -d "$HOME/go/bin" ] && export PATH=$PATH:"$HOME/go/bin"
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin":$PATH
 [ -f "/home/mjl/.ghcup/env" ] && source "/home/mjl/.ghcup/env" # ghcup-env

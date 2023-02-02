@@ -17,6 +17,8 @@ eval "$(starship init bash)"
 [ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
 [ -d "$HOME/go/bin" ] && export PATH=$PATH:"$HOME/go/bin"
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin":$PATH
+[ -d "$HOME/.emacs.d/bin" ] && export PATH=$PATH:"$HOME/.emacs.d/bin"
+[ -d "$HOME/.rd/bin" ] && export PATH="$HOME/.rd/bin":$PATH
 [ -f "/home/mjl/.ghcup/env" ] && source "/home/mjl/.ghcup/env" # ghcup-env
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
