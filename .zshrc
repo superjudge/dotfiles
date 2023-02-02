@@ -11,6 +11,9 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
 
 # export EDITOR=lvim
+export ALTERNATE_EDITOR=""
+alias e="emacsclient --tty"
+alias ev="emacsclient --create-frame"
 
 HISTFILE=~/.zhistory
 HISTSIZE=SAVEHIST=10000
