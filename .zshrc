@@ -36,7 +36,8 @@ eval "$(starship init zsh)"
 [ -d "$HOME/.rd/bin" ] && export PATH="$HOME/.rd/bin":$PATH
 [ -d "$HOME/go/bin" ] && export PATH=$PATH:"$HOME/go/bin"
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin":$PATH
-[ -f "/home/mjl/.ghcup/env" ] && source "/home/mjl/.ghcup/env" # ghcup-env
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+[ -f "$HOME/.sdkman/bin/sdkman-init.sh" ] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
