@@ -11,15 +11,8 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
--- lvim.colorscheme = 'forestbones'
-lvim.colorscheme = 'zenwritten'
--- lvim.colorscheme = "onedarker"
--- lvim.colorscheme = "gruvbox-material"
--- BOO Color Schemes
--- lvim.colorscheme = "sunset_cloud"
--- lvim.colorscheme = "radioactive_waste"
--- lvim.colorscheme = "forest_stream"
--- lvim.colorscheme = "crimson_moonlight"
+lvim.colorscheme = 'tokyonight'
+-- lvim.colorscheme = 'zenwritten'
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -189,8 +182,8 @@ linters.setup {
 lvim.plugins = {
   -- { "sainnhe/gruvbox-material" },
   { "rktjmp/lush.nvim" },
-  { "mcchrish/zenbones.nvim" },
   { "ethanholz/nvim-lastplace" },
+  -- { "mcchrish/zenbones.nvim" },
   --     {"folke/tokyonight.nvim"},
   --     {
   --       "folke/trouble.nvim",
