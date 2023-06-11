@@ -12,3 +12,5 @@ a.out
 .svn
 .idea
 .vscode
+.tmux/plugins
+.config/lvim/lazy-lock.json
