@@ -34,7 +34,7 @@ alias ll='ls -l'
 # Setup starship
 eval "$(starship init zsh)"
 
-[[ -d "$HOME/.local/share/nvim-linux64/bin" ]] && export PATH=$PATH:"$HOME/.local/share/nvim-linux64/bin"
+[[ -d "$HOME/.local/share/nvim-linux64/bin" ]] && export PATH="$HOME/.local/share/nvim-linux64/bin":$PATH
 # [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 # [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
