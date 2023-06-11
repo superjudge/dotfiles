@@ -6,11 +6,14 @@ autoload -Uz compinit bashcompinit
 compinit
 bashcompinit
 
+set -o emacs
+
 setopt completeinword
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
 
 # export EDITOR=lvim
+export EDITOR=vi
 export ALTERNATE_EDITOR=""
 alias e="emacsclient --tty"
 alias ev="emacsclient --create-frame"
@@ -30,7 +33,7 @@ alias ll='ls -l'
 eval "$(starship init zsh)"
 
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh
 [ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
 [ -d "$HOME/.emacs.d/bin" ] && export PATH=$PATH:"$HOME/.emacs.d/bin"
 [ -d "$HOME/.rd/bin" ] && export PATH="$HOME/.rd/bin":$PATH
