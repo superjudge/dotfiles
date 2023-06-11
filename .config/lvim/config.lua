@@ -140,8 +140,8 @@ lvim.builtin.treesitter.highlight.enable = true
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { command = "black", filetypes = { "python" } },
-  { command = "isort", filetypes = { "python" } },
+  { command = "black",     filetypes = { "python" } },
+  { command = "isort",     filetypes = { "python" } },
   --   {
   --     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
   --     command = "prettier",
@@ -153,7 +153,7 @@ formatters.setup {
   --   },
   { name = "goimports" },
   { name = "beautysh" },
-  { command = "golines", extra_args = { "-m", "88" } },
+  { command = "golines",   extra_args = { "-m", "88" } },
   { name = "clang_format", filetypes = { "proto" } },
   { name = "jq" },
   { command = "eslint_d" },
@@ -188,13 +188,15 @@ lvim.plugins = {
   -- { "sainnhe/gruvbox-material" },
   { "rktjmp/lush.nvim" },
   -- { "mcchrish/zenbones.nvim" },
-  { "ethanholz/nvim-lastplace",
+  {
+    "ethanholz/nvim-lastplace",
     config = function()
       require("nvim-lastplace").setup()
     end
   },
-  { "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
+  {
+    "folke/todo-comments.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
     config = function()
       require("todo-comments").setup {
         -- your configuration comes here
@@ -203,8 +205,9 @@ lvim.plugins = {
       }
     end
   },
-  { "folke/trouble.nvim",
-    requires = "nvim-tree/nvim-web-devicons",
+  {
+    "folke/trouble.nvim",
+    dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       require("trouble").setup {
         -- your configuration comes here
@@ -213,7 +216,8 @@ lvim.plugins = {
       }
     end
   },
-  { "folke/zen-mode.nvim",
+  {
+    "folke/zen-mode.nvim",
     config = function()
       require("zen-mode").setup {
         window = {
@@ -223,14 +227,14 @@ lvim.plugins = {
           -- * a percentage of the width / height of the editor when <= 1
           -- * a function that returns the width or the height
           width = 120, -- width of the Zen window
-          height = 1, -- height of the Zen window
+          height = 1,  -- height of the Zen window
           -- by default, no options are changed for the Zen window
           -- uncomment any of the options below, or add other vim.wo options you want to apply
           options = {
             -- signcolumn = "no", -- disable signcolumn
-            number = false, -- disable number column
+            number = false,         -- disable number column
             relativenumber = false, -- disable relative numbers
-            cursorline = false, -- disable cursorline
+            cursorline = false,     -- disable cursorline
             -- cursorcolumn = false, -- disable cursor column
             -- foldcolumn = "0", -- disable fold column
             -- list = false, -- disable whitespace characters
@@ -241,12 +245,12 @@ lvim.plugins = {
           -- comment the lines to not apply the options
           options = {
             enabled = true,
-            ruler = false, -- disables the ruler text in the cmd line area
-            showcmd = false, -- disables the command in the last line of the screen
+            ruler = false,                -- disables the ruler text in the cmd line area
+            showcmd = false,              -- disables the command in the last line of the screen
           },
-          twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+          twilight = { enabled = true },  -- enable to start Twilight when zen mode opens
           gitsigns = { enabled = false }, -- disables git signs
-          tmux = { enabled = true }, -- disables the tmux statusline
+          tmux = { enabled = true },      -- disables the tmux statusline
           -- this will change the font size on kitty when in zen mode
           -- to make this work, you need to set the following kitty options:
           -- - allow_remote_control socket-only
