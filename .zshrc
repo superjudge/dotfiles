@@ -30,6 +30,8 @@ setopt auto_cd
 
 alias ls='ls -FG --color=auto'
 alias ll='ls -l'
+alias pyflakes=pyflakes3
+alias nosetests=nosetests3
 
 # Setup starship
 eval "$(starship init zsh)"
@@ -53,6 +55,7 @@ eval "$(starship init zsh)"
 # opam configuration
 [[ ! -r /home/mjl/.opam/opam-init/init.zsh ]] || source /home/mjl/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 [[ -f "$HOME/.asdf/asdf.sh" ]] && . "$HOME/.asdf/asdf.sh"
+[[ -d "$HOME/.config/emacs/bin" ]] && export PATH="$HOME/.config/emacs/bin":$PATH
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
