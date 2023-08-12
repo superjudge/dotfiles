@@ -56,6 +56,7 @@ eval "$(starship init zsh)"
 [[ ! -r /home/mjl/.opam/opam-init/init.zsh ]] || source /home/mjl/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 [[ -f "$HOME/.asdf/asdf.sh" ]] && . "$HOME/.asdf/asdf.sh"
 [[ -d "$HOME/.config/emacs/bin" ]] && export PATH="$HOME/.config/emacs/bin":$PATH
+[[ -d "$HOME/.local/share/zig/" ]] && export PATH="$HOME/.local/share/zig":$PATH
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
