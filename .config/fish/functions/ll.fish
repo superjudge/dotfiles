@@ -1,3 +1,3 @@
-function ll
-  exa -l $argv
+function ll --wraps=exa
+  exa -l --classify $argv
 end
