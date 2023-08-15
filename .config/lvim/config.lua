@@ -11,7 +11,8 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = 'tokyonight'
+lvim.colorscheme = 'base16-gruvbox-dark-medium'
+-- lvim.colorscheme = 'tokyonight'
 -- lvim.colorscheme = 'zenwritten'
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
@@ -273,6 +274,7 @@ lvim.plugins = {
       }
     end
   },
+  { "RRethy/nvim-base16" },
   --     {"folke/tokyonight.nvim"},
   --     {
   --       "folke/trouble.nvim",
