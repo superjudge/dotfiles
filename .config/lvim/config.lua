@@ -9,9 +9,10 @@ an executable
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 
 -- general
+-- vim.g.base16.colorspace = 256
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = 'base16-gruvbox-dark-medium'
+lvim.colorscheme = "base16-gruvbox-material-dark-medium"
 -- lvim.colorscheme = 'tokyonight'
 -- lvim.colorscheme = 'zenwritten'
 -- to disable icons and use a minimalist setup, uncomment the following
