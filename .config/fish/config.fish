@@ -1,13 +1,11 @@
 if status is-interactive
-  # First clone base16-shell:
-  # git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-  
-  # Commands to run in interactive sessions can go here
-  set BASE16_SHELL "$HOME/.config/base16-shell/"
-  source "$BASE16_SHELL/profile_helper.fish"
+    # Commands to run in interactive sessions can go here
 
-  base16-gruvbox-dark-medium
+    set BASE16_SHELL "$HOME/.config/base16-shell/"
+    source "$BASE16_SHELL/profile_helper.fish"
 
-  zoxide init fish | source
-  starship init fish | source
+    base16-gruvbox-dark-material-medium
+
+    zoxide init fish | source
+    starship init fish | source
 end
