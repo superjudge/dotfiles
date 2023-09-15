@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/home/mjl/.local/share/VCV/Rack
+Path=/home/mjl/.local/share/VCV
+Name=VCV Rack2
+Icon=/home/mjl/.local/share/VCV/res/icon.png
