@@ -1,10 +1,7 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
-    if test -f /usr/share/doc/fzf/examples/key-bindings.fish
-      source /usr/share/doc/fzf/examples/key-bindings.fish
-      fzf_key_bindings
-    end
+    fzf_key_bindings
 
     set BASE16_SHELL "$HOME/.config/base16-shell/"
     if test -f "$BASE16_SHELL/profile_helper.fish"
