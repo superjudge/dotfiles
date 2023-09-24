@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Path=/home/mjl/.local/share/sononym
+Exec=/home/mjl/.local/share/sononym/sononym
+Name=Sononym
+Icon=/home/mjl/.local/share/VCV/res/icon.png
